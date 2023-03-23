@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
 const router = express.Router();
-const connectionDb = require("./db");
+const connectionDb = require("../src/db");
 const bodyParser = require('body-parser');
-const server = require("./server");
-var Azienda = require("./models/aziendaModel");
+const server = require("../src/server");
+var Azienda = require("../models/aziendaModel");
 
 
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -28,11 +28,12 @@ router.get(`/azienda/:id`, (req, res) => {
     `SELECT * FROM azienda WHERE id_azienda = '${id}' `,
     (err, result) => {
       if (err) {
+
         console.log(err);
 
       } else {
-        res.send(result[0])
 
+        res.send(result[0])
 
       }
     }

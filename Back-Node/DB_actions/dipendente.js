@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const router = express.Router();
-const connectionDb = require("./db");
-const server = require("./server");
+const connectionDb = require("../src/db");
+const server = require("../src/server");
 const bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -15,7 +15,7 @@ router.get("/dipendente", (req, res) => {
       } else {
         const dipendente = rows;
         res.send(dipendente);
-        console.log(dipendente);
+        //console.log(dipendente);
       }
     });
   });
@@ -30,7 +30,7 @@ router.get("/dipendente", (req, res) => {
           console.log(err);
     
         } else {
-          console.log(result);
+          //console.log(result);
           res.send(result)
         }
       }
@@ -50,7 +50,7 @@ router.get("/dipendente", (req, res) => {
           console.log(err);
     
         } else {
-          console.log(result);
+          //console.log(result);
           res.send(result)
         }
       }
@@ -66,7 +66,7 @@ router.get("/dipendente", (req, res) => {
           console.log(err);
     
         } else {
-          console.log(result);
+          //console.log(result);
           res.send(result)
         }
       }
@@ -83,7 +83,7 @@ router.get("/dipendente", (req, res) => {
           console.log(err);
     
         } else {
-          console.log(result);
+          //console.log(result);
           res.send(result)
         }
       }
@@ -102,7 +102,7 @@ router.get("/dipendente", (req, res) => {
           console.log(err);
     
         } else {
-          console.log(result);
+          //console.log(result);
           res.send(result)
         }
       }
@@ -120,7 +120,7 @@ router.get("/dipendente", (req, res) => {
           console.log(err);
     
         } else {
-          console.log(result);
+          //console.log(result);
           res.send(result)
         }
       }
@@ -138,7 +138,7 @@ router.get("/dipendente", (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          console.log(result);
+          //console.log(result);
           res.send(result);
   
         }

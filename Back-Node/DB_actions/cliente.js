@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const router = express.Router();
-const connectionDb = require("./db");
-const server = require("./server");
+const connectionDb = require("../src/db");
+const server = require("../src/server");
 const bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -15,7 +15,7 @@ router.get("/cliente", (req, res) => {
       } else {
         const cliente = rows;
         res.send(cliente);
-        console.log(cliente);
+        //console.log(cliente);
       }
     });
   });
@@ -30,7 +30,7 @@ router.get("/cliente", (req, res) => {
           console.log(err);
     
         } else {
-          console.log(result);
+          //console.log(result);
           res.send(result[0])
         }
       }
@@ -50,7 +50,7 @@ router.get("/cliente", (req, res) => {
           console.log(err);
     
         } else {
-          console.log(result);
+          //console.log(result);
           res.send(result)
         }
       }

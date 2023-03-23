@@ -66,7 +66,7 @@ app.post("/login", (req, res) => {
                 // console.log(checks(dbData))
 
                 if (checks(result) == true) {
-                    console.log(req.session.userId);
+                    //console.log(req.session.userId);
                     req.session.userId = 1;
                     res.redirect('/home');
                 } else {
@@ -92,10 +92,14 @@ app.get('/home', checkAuth, (req, res) => {
 const getCompanyById = app.get("/azienda", (req, res) => {
     connectionDb.query(`SELECT * FROM azienda WHERE id_azienda = '${id}' `,(err, res) => {
            if(err) {
+
               return console.log(err);
-         } else {
+
+            } else {
                
                console.log(res)
                
-           }
-       })});
+            }
+       })
+    }
+);
