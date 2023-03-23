@@ -1,0 +1,35 @@
+<h2 class="text-dark">Dipendenti</h2>
+<div>
+  <table class="table ">
+    <thead class="bg-dark text-white">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome dipendente</th>
+        <th scope="col">Cognome dipendente</th>
+        <th scope="col">CF</th>
+        <th scope="col">Iban</th>
+        <th scope="col">ID tipo contratto</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Data di nascita</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of dipendente$ | async">
+        <th>{{d.id_dipendente}}</th>
+        <td>{{d.nome}}</td>
+        <td>{{d.cognome}}</td>
+        <td>{{d.cf}}</td>
+        <td>{{d.iban}}</td>
+        <td>{{d.id_tipo_contratto}}</td>
+        <td>{{d.email}}</td>
+        <td>{{d.telefono}}</td>
+        <td>{{d.data_nascita}}</td>
+        <button  class="btn bg-dark text-white m-2" (click)="deleteEmployee(d.id_dipendente, idaz)">Elimina</button>
+        <button  class="btn bg-dark text-white m-2" routerLink="/dipendenteUpdate/{{d.id_dipendente}}">Modifica</button>
+      </tr>
+    </tbody>
+  </table><br>
+
+  <button type="button" class="btn btn-dark" routerLink="/addDipendente/{{idaz}}">Aggiungi</button>
+</div>

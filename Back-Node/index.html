@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+    <head>
+
+        <link rel = "stylesheet" href = "/style.css" type="text/css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <title>Login</title>
+
+    </head>
+
+    <body>
+
+        <div class = "container">
+
+            <h1>Sign In</h1>
+
+            <div class="box">
+
+                <form action="/login" method = "post" class = "form">
+
+                    <label for = "email">Email: </label>
+                    <br>
+                    <input type = "text" name = "email" id = "email" placeholder = "Email" required/>
+                    <br>
+                    <label for = "password">Password: </label>
+                    <br>
+                    <input type = "password" name = "password" id = "password" placeholder = "Password" required/>
+
+                    <div class="buttons">
+
+                        <a routerLink = "home"><button type = "button" class="btn btn-primary">Home</button></a>
+                        <button class = "btn btn-success" type = "submit">Login</button>
+
+                    </div>
+
+                    <!-- <div id = "err_msg">Credenziali errate</div> -->
+
+                </form>
+
+            </div>
+
+        </div>
+
+</html>

@@ -1,0 +1,88 @@
+<div class="container">
+  <!-- main form -->
+  <form (ngSubmit)="submit(form1.form, form2.form)" class="form" #mainForm="ngForm">
+    <!-- first form  -->
+    <form  class="form" #form1="ngForm">
+      <fieldset >
+        <legend>Anagrafica</legend>
+        <div class="form-group">
+          <label for="id_dipendente">*Id Dipendente</label>
+          <input type="text" id="id_dipendente" name="id_dipendente" class="form-control" ngModel #id_dipendente="ngModel" required minlength="3">
+          <div class="error" *ngIf="nome.touched && !nome.valid">
+            Il campo non può essere vuoto
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" class="form-control" ngModel #nome="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="cognome">Cognome</label>
+          <input type="text" id="cognome" name="cognome" class="form-control" ngModel #cognome="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="cf">Codice Fiscale</label>
+          <input type="text" id="cf" name="cf" class="form-control" ngModel #cf="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="id_tipo_contratto">Tipo contratto</label> <br>
+          <select id="id_tipo_contratto" name="id_tipo_contratto" ngModel #id_tipo_contratto="ngModel">
+            <option value="198ef11d-cf73-4245-8469-2ddfa9979acf">Indeterminato</option>
+            <option value="52fbe812-08f6-11ed-861d-0242ac120002">Determinato</option>
+          </select>
+          <!-- <input type="text" id="id_tipo_contratto" name="id_tipo_contratto" class="form-control" ngModel #id_tipo_contratto="ngModel"> -->
+        </div>
+        <div class="form-group">
+          <label for="data_nascita">Data di nascita</label>
+          <input type="date" id="data_nascita" name="data_nascita" class="form-control" ngModel #data_nascita="ngModel">
+        </div>
+      </fieldset>
+      <fieldset >
+        <legend >Contatti</legend>
+        <div class="form-group">
+          <label for="iban">iban</label>
+          <input type="text" id="iban" name="iban" class="form-control" ngModel #iban="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="telefono">telefono</label>
+          <input type="text" id="telefono" name="telefono" class="form-control" ngModel #telefono="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="email">email</label>
+          <input type="text" id="email" name="email" class="form-control" ngModel #email="ngModel">
+        </div>
+      </fieldset>
+      <!-- <div class="actions">
+        <button type="submit" class="btn btn-dark">Submit</button>
+          <p [hidden]="form1.valid">Compila tutti i campi contrassegnati con un *</p>
+      </div> -->
+    </form>
+    <!-- second form -->
+    <form class="form2" #form2="ngForm">
+      <fieldset >
+        <div class="form-group">
+          <input type="text" [(value)]="form1.value.id_dipendente" id="id_dipendente" name="id_dipendente" class="form-control" ngModel #id_dipendente="ngModel" hidden>
+        </div>
+        <div *ngIf="dipendente$ | async as a" class="form-group">
+          <input type="text" id="id_azienda" value="{{id}}" name="id_azienda" class="form-control" ngModel="{{id}}" hidden>
+        </div>
+        <div class="form-group">
+          <label for="data_inizio">Data Inizio</label>
+          <input type="date" id="data_inizio" name="data_inizio" class="form-control" ngModel #data_inizio="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="matricola">matricola</label>
+          <input type="text" id="matricola" name="matricola" class="form-control" ngModel #matricola="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="data_fine">Data fine</label>
+          <input type="date" id="data_fine" name="data_fine" class="form-control" ngModel #data_fine="ngModel">
+        </div>
+      </fieldset>
+      <!-- <div class="actions">
+        <p [hidden]="form1.valid">Compila tutti i campi contrassegnati con un *</p>
+      </div> -->
+    </form>
+    <button type="submit" class="btn btn-dark">Submit</button>
+  </form>
+</div>

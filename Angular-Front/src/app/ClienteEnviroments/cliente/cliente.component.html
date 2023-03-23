@@ -1,0 +1,38 @@
+<h2 class="text-dark">Clienti</h2>
+<div>
+  <table class="table ">
+    <thead class="bg-dark text-white">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Partita iva</th>
+        <th scope="col">Indirizzo</th>
+        <th scope="col">Cap</th>
+        <th scope="col">Iban</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Email</th>
+        <th scope="col">Pec</th>
+        <th scope="col">Fax</th>
+        <th scope="col">Commesse</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of cliente$ | async" >
+        <th>{{c.id_cliente}}</th>
+        <td>{{c.nome}}</td>
+        <td>{{c.p_iva}}</td>
+        <td>{{c.indirizzo}}</td>
+        <td>{{c.cap}}</td>
+        <td>{{c.iban}}</td>
+        <td>{{c.telefono}}</td>
+        <td>{{c.email}}</td>
+        <td>{{c.pec}}</td>
+        <td>{{c.fax}}</td>
+        <td *ngIf="numeroCommesse">{{numeroCommesse}}</td>
+      </tr>
+    </tbody>
+  </table><br>
+
+  <button type="button" class="btn btn-dark" (click)="addCustomers()" routerLink="/addCliente">Aggiungi</button>
+</div>
+
