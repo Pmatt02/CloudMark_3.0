@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'dipendenteUpdate/:id', component: UpdateDipendenteComponent},
   {path: 'addAzienda', component: AddAziendaComponent},
   {path: 'addDipendente/:id', component: AddDipendenteComponent},
-  {path: 'addCliente', component: AddClienteComponent},
+  {path: 'addCliente/:id', component: AddClienteComponent},
   {path: 'azienda', component: AziendaComponent},
   { path: '**', redirectTo: '' }
 ];

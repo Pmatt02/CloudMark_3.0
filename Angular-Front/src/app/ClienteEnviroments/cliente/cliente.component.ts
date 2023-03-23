@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable, toArray } from 'rxjs';
 import { Cliente } from 'src/app/modules/cliente';
@@ -16,6 +16,7 @@ export class ClienteComponent implements OnInit{
   commesse!:Observable<Cliente[]>;
   numeroCommesse: any;
   id!:any;
+  @Input() idaz: any;
 
   constructor(private router: ActivatedRoute, private servizioCliente: ClienteService){};
 

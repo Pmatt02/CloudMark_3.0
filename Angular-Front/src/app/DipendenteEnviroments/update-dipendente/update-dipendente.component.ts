@@ -5,11 +5,14 @@ import { Observable } from 'rxjs';
 import { Dipendente } from 'src/app/modules/dipendente';
 import { DipendenteService } from 'src/app/services/dipendente.service';
 
+
+
 @Component({
   selector: 'app-update-dipendente',
   templateUrl: './update-dipendente.component.html',
   styleUrls: ['./update-dipendente.component.css']
 })
+
 export class UpdateDipendenteComponent implements OnInit{
 dipendente_Id: any;
 dipendente$ !:Observable<Dipendente[]>;

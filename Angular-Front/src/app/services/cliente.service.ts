@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { URL } from 'src/environments/config';
+import { URL, URL1 } from 'src/environments/config';
 import { Cliente } from '../modules/cliente';
 
 @Injectable({
@@ -18,17 +18,25 @@ export class ClienteService {
   getCustomersById(id: string) {
     return this.http.get<Cliente[]>(`${URL}/cliente/customer?id=${id}`)
   }
+  
   // aggiungi cliente
   addCustomers(arg: any){
-    return  this.http.post<Cliente[]>(`${URL}/cliente/new`, arg)
+    // return  this.http.post<Cliente[]>(`${URL}/cliente/new`, arg)
+    return  this.http.post<Cliente[]>(`${URL1}/clienteAggiungi`, arg)
   }
+  
+  addLinkCompany(id_azienda: string, id_cliente: string) {
+    return this.http.post<any>(`${URL1}/clienteAziendaAdd/${id_azienda}-${id_cliente}`, null)
+  }
+
   // elimina cliente
   deleteCustomer(id: string){
     return this.http.delete<Cliente[]>(`${URL}/cliente/delete?customer=${id}`)
   }
   // clienti da id azienda
   getCustomersByAzienda(id: string){
-    return this.http.get<Cliente[]>(`${URL}/clientecustomer_by_id_azienda?id=${id}`)
+    // return this.http.get<Cliente[]>(`${URL}/clientecustomer_by_id_azienda?id=${id}`)
+    return this.http.get<Cliente[]>(`${URL1}/clienteAzienda/${id}`)
   }
   // clienti da id commessa
   getCustomersByCommessa(id: string){
