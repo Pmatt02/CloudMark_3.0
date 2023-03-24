@@ -15,6 +15,7 @@ import { ClienteComponent } from './ClienteEnviroments/cliente/cliente.component
 import { AddClienteComponent } from './ClienteEnviroments/add-cliente/add-cliente.component';
 import { UpdateDipendenteComponent } from './DipendenteEnviroments/update-dipendente/update-dipendente.component';
 import { UpdateClienteComponent } from './ClienteEnviroments/update-cliente/update-cliente.component';
+import { ClientiDetailsComponent } from './ClienteEnviroments/clienti-details/clienti-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { UpdateClienteComponent } from './ClienteEnviroments/update-cliente/upda
     ClienteComponent,
     AddClienteComponent,
     UpdateDipendenteComponent,
-    UpdateClienteComponent
+    UpdateClienteComponent,
+    ClientiDetailsComponent
     ],
   imports: [
     BrowserModule , HttpClientModule, AppRoutingModule, FormsModule

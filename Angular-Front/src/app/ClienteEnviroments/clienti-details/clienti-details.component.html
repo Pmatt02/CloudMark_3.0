@@ -1,0 +1,39 @@
+<h2 class="text-dark"> Dettaglio Azienda</h2>
+<div class="m-5" *ngIf="Clienti$ | async as a">
+  <table class="table ">
+    <thead class="bg-dark text-white">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome azienda</th>
+        <th scope="col">Indirizzo azienda</th>
+        <th scope="col">CAP</th>
+        <th scope="col">Partita Iva</th>
+        <th scope="col">Email Azienda</th>
+        <th scope="col">IBAN</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">PEC</th>
+        <th scope="col">FAX</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <th >{{a.id_cliente}}</th>
+        <td>{{a.nome}}</td>
+        <td>{{a.indirizzo}}</td>
+        <td>{{a.cap}}</td>
+        <td>{{a.p_iva}}</td>
+        <td>{{a.email}}</td>
+        <td>{{a.iban}}</td>
+        <td>{{a.telefono}}</td>
+        <td>{{a.pec}}</td>
+        <td>{{a.fax}}</td><br>
+        
+      </tr>
+    </tbody>
+  </table><br>
+  <div>
+    <button class="btn btn-dark m-2" routerLink="/">Home</button>
+    
+  </div>
+</div>
+

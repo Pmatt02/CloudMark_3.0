@@ -9,6 +9,7 @@ import { AddDipendenteComponent } from './DipendenteEnviroments/add-dipendente/a
 import { AddClienteComponent } from './ClienteEnviroments/add-cliente/add-cliente.component';
 import { UpdateDipendenteComponent } from './DipendenteEnviroments/update-dipendente/update-dipendente.component';
 import { UpdateClienteComponent } from './ClienteEnviroments/update-cliente/update-cliente.component';
+import { ClientiDetailsComponent } from './ClienteEnviroments/clienti-details/clienti-details.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'addDipendente/:id', component: AddDipendenteComponent},
   {path: 'addCliente/:id', component: AddClienteComponent},
   {path: 'updateCliente/:id', component: UpdateClienteComponent},
+  {path:'detailsCliente/:id', component: ClientiDetailsComponent},
   {path: 'azienda', component: AziendaComponent},
   { path: '**', redirectTo: '' }
 ];
