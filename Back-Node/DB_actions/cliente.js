@@ -66,7 +66,6 @@ router.get("/cliente", (req, res) => {
       (err, result) => {
         if (err) {
           console.log(err);
-    
         } else {
           console.log(result);
           res.send(result)
@@ -74,6 +73,7 @@ router.get("/cliente", (req, res) => {
       }
     );
   });
+
   router.post(`/clienteAziendaAdd/:id_azienda-:id_cliente`, (req, res) => {
     var id_azienda= req.params.id_azienda;
     var id_cliente =req.params.id_cliente
@@ -92,5 +92,23 @@ router.get("/cliente", (req, res) => {
       }
     );
   });
+
+
+router.put("/clienteUpdate", (req, res) => {
+  var dati = req.body;
+  connectionDb.query(
+    `UPDATE cliente\
+    SET nome='${dati.nome}', p_iva= '${dati.p_iva}', indirizzo= 'dati.${dati.indirizzo}', cap='${dati.cap}', iban='${dati.iban}', telefono='${dati.telefono}', email='${dati.email}', pec='${dati.pec}', fax='${dati.fax}'\
+    WHERE id_cliente='${dati.id_cliente}'`,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+        res.send(result);
+      }
+    }
+  );
+});
 
   module.exports = router;

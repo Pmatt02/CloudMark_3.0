@@ -1,0 +1,54 @@
+<div class="container">
+  <form *ngIf="cliente | async as c" (ngSubmit)="modificaCliente(form.value)" class="form" #form="ngForm">
+    <fieldset>
+      <legend>Anagrafica</legend>
+      <div class="form-group">
+        <label for="id_cliente">*Id Cliente</label>
+        <input type="text" value="{{c.id_cliente}}" id="id_cliente" class="form-control" [ngModel]="c.id_cliente" name="id_cliente" readonly>
+      </div>
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" value="{{c.nome}}" id="nome" name="nome" class="form-control" [ngModel]="c.nome">
+      </div>
+      <div class="form-group">
+        <label for="p_iva">Partita Iva</label>
+        <input type="text" value="{{c.p_iva}}" id="p_iva" name="p_iva" class="form-control" [ngModel]="c.p_iva">
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Contatti</legend>
+      <div class="form-group">
+        <label for="indirizzo">Indirizzo</label>
+        <input type="text" value="{{c.indirizzo}}" id="indirizzo" name="indirizzo" class="form-control" [ngModel]="c.indirizzo" required>
+      </div>
+      <div class="form-group">
+        <label for="cap">Cap</label>
+        <input type="text" value="{{c.cap}}" id="cap" name="cap" class="form-control" [ngModel]="c.cap">
+      </div>
+      <div class="form-group">
+        <label for="iban">iban</label>
+        <input type="text" value="{{c.iban}}" id="iban" name="iban" class="form-control" [ngModel]="c.iban">
+      </div>
+      <div class="form-group">
+        <label for="telefono">telefono</label>
+        <input type="text" value="{{c.telefono}}" id="telefono" name="telefono" class="form-control" [ngModel]="c.telefono">
+      </div>
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="text" value="{{c.email}}" id="email" name="email" class="form-control" [ngModel]="c.email">
+      </div>
+      <div class="form-group">
+        <label for="pec">pec</label>
+        <input type="text" value="{{c.pec}}" id="pec" name="pec" class="form-control" [ngModel]="c.pec">
+      </div>
+      <div class="form-group">
+        <label for="fax">fax</label>
+        <input type="text" value="{{c.fax}}" id="fax" name="fax" class="form-control" [ngModel]="c.fax">
+      </div>
+    </fieldset>
+    <div class="actions">
+      <button type="submit" class="btn btn-dark">Submit</button>
+      <p [hidden]="form.valid">Compila tutti i campi contrassegnati con un *</p>
+    </div>
+  </form>
+</div>

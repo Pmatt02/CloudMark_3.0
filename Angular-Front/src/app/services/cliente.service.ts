@@ -8,7 +8,7 @@ import { Cliente } from '../modules/cliente';
   providedIn: 'root'
 })
 export class ClienteService {
-
+  
   constructor(private http: HttpClient) { };
   // tutti i clienti
   getAllCustomers(): Observable<Cliente[]> {
@@ -16,7 +16,7 @@ export class ClienteService {
   };
   // cliente by id
   getCustomersById(id: string) {
-    return this.http.get<Cliente[]>(`${URL}/cliente/customer?id=${id}`)
+    return this.http.get<Cliente>(`${URL1}/cliente/${id}`);
   }
   
   // aggiungi cliente
@@ -41,6 +41,11 @@ export class ClienteService {
   // clienti da id commessa
   getCustomersByCommessa(id: string){
     return this.http.get<Cliente[]>(`${URL}/clientecustomer_by_commessa?id=${id}`)
+  }
+
+  // aggiorna cliente
+  updateCliente(arg: any){
+    return this.http.put<Cliente[]>(`${URL1}/clienteUpdate`, arg);
   }
 
 

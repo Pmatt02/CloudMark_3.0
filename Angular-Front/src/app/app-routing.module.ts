@@ -8,6 +8,7 @@ import { UpdateAziendaComponent } from './AziendaEnviroments/update-azienda/upda
 import { AddDipendenteComponent } from './DipendenteEnviroments/add-dipendente/add-dipendente.component';
 import { AddClienteComponent } from './ClienteEnviroments/add-cliente/add-cliente.component';
 import { UpdateDipendenteComponent } from './DipendenteEnviroments/update-dipendente/update-dipendente.component';
+import { UpdateClienteComponent } from './ClienteEnviroments/update-cliente/update-cliente.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'addAzienda', component: AddAziendaComponent},
   {path: 'addDipendente/:id', component: AddDipendenteComponent},
   {path: 'addCliente/:id', component: AddClienteComponent},
+  {path: 'updateCliente/:id', component: UpdateClienteComponent},
   {path: 'azienda', component: AziendaComponent},
   { path: '**', redirectTo: '' }
 ];
