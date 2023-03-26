@@ -111,4 +111,66 @@ router.put("/clienteUpdate", (req, res) => {
   );
 });
 
+//COMMESSE
+
+router.get("/commesseCliente/:id", (req, res) => {
+  var id_cliente = req.params.id;
+  connectionDb.query(`SELECT * FROM commessa where id_cliente='${id_cliente}'`, (err, rows) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const cliente = rows;
+      res.send(cliente);
+      //console.log(cliente);
+    }
+  });
+});
+router.get("/commesse/:id", (req, res) => {
+  var id_commessa = req.params.id;
+  connectionDb.query(`SELECT * FROM commessa where id_commessa='${id_commessa}'`, (err, rows) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const cliente = rows;
+      res.send(cliente[0]);
+      //console.log(cliente);
+    }
+  });
+});
+
+router.put("/commessaUpdate", (req, res) => {
+  var dati = req.body;
+  connectionDb.query(
+    `UPDATE commessa\
+    SET descrizione='${dati.descrizione}', id_cliente= '${dati.id_cliente}', id_azienda= '${dati.id_azienda}', data_inizio='${dati.data_inizio}', data_fine='${dati.data_fine}'\
+    WHERE id_commessa='${dati.id_commessa}'`,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+        res.send(result);
+      }
+    }
+  );
+});
+
+router.post(`/commessaAggiungi`, (req, res) => {
+  var dati= req.body
+  console.log(dati)
+  connectionDb.query(
+    `INSERT INTO commessa (id_commessa, descrizione, id_cliente, id_azienda, data_inizio, data_fine) \
+    VALUE ('${dati.id_commessa}','${dati.descrizione}','${dati.id_cliente}','${dati.id_azienda}','${dati.data_inizio}','${dati.data_fine}') `,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+        res.send(result)
+      }
+    }
+  );
+});
+
+
   module.exports = router;

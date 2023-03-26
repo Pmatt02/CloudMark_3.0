@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { URL, URL1 } from 'src/environments/config';
 import { Cliente } from '../modules/cliente';
+import { Commessa } from '../modules/commessa';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,10 @@ export class ClienteService {
     // return  this.http.post<Cliente[]>(`${URL}/cliente/new`, arg)
     return  this.http.post<Cliente[]>(`${URL1}/clienteAggiungi`, arg)
   }
+  addCommessa(arg: any){
+    // return  this.http.post<Cliente[]>(`${URL}/cliente/new`, arg)
+    return  this.http.post<Commessa>(`${URL1}/commessaAggiungi`, arg)
+  }
   
   addLinkCompany(id_azienda: string, id_cliente: string) {
     return this.http.post<any>(`${URL1}/clienteAziendaAdd/${id_azienda}-${id_cliente}`, null)
@@ -42,10 +47,20 @@ export class ClienteService {
   getCustomersByCommessa(id: string){
     return this.http.get<Cliente[]>(`${URL}/clientecustomer_by_commessa?id=${id}`)
   }
+  getCommessabyCustomerId(id: string){
+    return this.http.get<Commessa[]>(`${URL1}/commesseCliente/${id}`)
+  }
+
+  getCommessaById(id: string){
+    return this.http.get<Commessa>(`${URL1}/commesse/${id}`)
+  }
 
   // aggiorna cliente
   updateCliente(arg: any){
     return this.http.put<Cliente[]>(`${URL1}/clienteUpdate`, arg);
+  }
+  updateCommessa(arg: any){
+    return this.http.put<Commessa>(`${URL1}/commessaUpdate`, arg);
   }
 
 

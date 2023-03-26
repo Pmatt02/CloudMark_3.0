@@ -146,4 +146,25 @@ router.get("/dipendente", (req, res) => {
     );
   });
 
+
+  router.post(`/dipendenteCommessaAdd/:id_dipendente/:id_commessa/:rate`, (req, res) => {
+    var id_dipendente= req.params.id_dipendente;
+    var id_commessa =req.params.id_commessa;
+    var rate =req.params.rate;
+    console.log(id_dipendente, id_commessa, rate)
+    connectionDb.query(
+      `insert into commessa_dipendente (id_commessa, id_dipendente, rate)\
+      values ('${id_commessa}', '${id_dipendente}', '${rate}') `,
+      (err, result) => {
+        if (err) {
+          console.log(err);
+    
+        } else {
+          console.log(result);
+          res.send(result)
+        }
+      }
+    );
+  });
+
   module.exports = router;

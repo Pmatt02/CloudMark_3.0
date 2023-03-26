@@ -1,0 +1,39 @@
+<div class="container" >
+    
+    <form *ngIf="commessa | async as a" (ngSubmit)="modificaCommessa(form.value)" class="form" #form="ngForm">
+      <fieldset >
+        <legend>Anagrafica</legend>
+        <div class="form-group">
+          <label for="id_commessa">*Id Azienda</label>
+          <input type="text" value="{{a.id_commessa}}" id="id_commessa" class="form-control" [ngModel]="a.id_commessa" name="id_commessa" readonly>
+        </div>
+        <div class="form-group">
+          <label for="descrizione">descrizione</label>
+          <input type="text" value="{{a.descrizione}}" id="descrizione" name="descrizione" class="form-control" [ngModel]="a.descrizione">
+        </div>
+        <div class="form-group">
+          <label for="id_cliente">Partita Iva</label>
+          <input type="text" value="{{a.id_cliente}}" id="id_cliente" name="id_cliente" class="form-control" [ngModel]="a.id_cliente">
+        </div>
+      </fieldset>
+      <fieldset >
+        <legend >Contatti</legend>
+        <div class="form-group">
+          <label for="id_azienda">id_azienda</label>
+          <input type="text" value="{{a.id_azienda}}" id="id_azienda" name="id_azienda" class="form-control" [ngModel]="a.id_azienda" id_azienda required>
+        </div>
+        <div class="form-group">
+          <label for="data_inizio">data_inizio</label>
+          <input type="date" value="{{a.data_inizio}}" id="data_inizio"  name="data_inizio" class="form-control" [ngModel]="a.data_inizio">
+        </div>
+        <div class="form-group">
+          <label for="data_fine">data_fine</label>
+          <input type="date" value="{{a.data_fine}}" id="data_fine" name="data_fine" class="form-control" [ngModel]="a.data_fine">
+        </div>
+      </fieldset>
+      <div class="actions">
+        <button type="submit" class="btn btn-dark">Submit</button>
+          <p [hidden]="form.valid">Compila tutti i campi contrassegnati con un *</p>
+      </div>
+    </form>
+  </div>

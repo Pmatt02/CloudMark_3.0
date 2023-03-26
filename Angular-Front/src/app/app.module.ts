@@ -16,6 +16,9 @@ import { AddClienteComponent } from './ClienteEnviroments/add-cliente/add-client
 import { UpdateDipendenteComponent } from './DipendenteEnviroments/update-dipendente/update-dipendente.component';
 import { UpdateClienteComponent } from './ClienteEnviroments/update-cliente/update-cliente.component';
 import { ClientiDetailsComponent } from './ClienteEnviroments/clienti-details/clienti-details.component';
+import { CommesseComponent } from './ClienteEnviroments/commesse/commesse.component';
+import { CommessaUpdateComponent } from './ClienteEnviroments/commessa-update/commessa-update.component';
+import { AddCommessaComponent } from './ClienteEnviroments/add-commessa/add-commessa.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,10 @@ import { ClientiDetailsComponent } from './ClienteEnviroments/clienti-details/cl
     AddClienteComponent,
     UpdateDipendenteComponent,
     UpdateClienteComponent,
-    ClientiDetailsComponent
+    ClientiDetailsComponent,
+    CommesseComponent,
+    CommessaUpdateComponent,
+    AddCommessaComponent
     ],
   imports: [
     BrowserModule , HttpClientModule, AppRoutingModule, FormsModule

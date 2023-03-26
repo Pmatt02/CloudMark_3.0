@@ -50,6 +50,10 @@ export class DipendenteService {
     // return this.http.post<any>(`${URL}/dipendente/link`, args)
     return this.http.post<any>(`${URL1}/AddDipendenteAzienda`, args)
   }
+  linkToCommessa(id_dipendente: string, id_commessa: string, rate: string){
+    // return this.http.post<any>(`${URL}/dipendente/link`, args)
+    return this.http.post<any>(`${URL1}/dipendenteCommessaAdd/${id_dipendente}/${id_commessa}/${rate}`, null)
+  }
 
   deleteLink(id_dipendente: string, id_azienda: string){
     // return this.http.delete<any>(`${URL}/dipendente/deletelink?id_dipendente=${id_dipendente}&id_azienda=${id_azienda}`)
