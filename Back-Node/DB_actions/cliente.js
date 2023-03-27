@@ -173,4 +173,38 @@ router.post(`/commessaAggiungi`, (req, res) => {
 });
 
 
+router.delete(`/commessaLinkDelete/:id_commessa`, (req, res) => {
+  var id_commessa = req.params.id_commessa;
+  var id_dipendente = req.params.id_dipendente;
+  connectionDb.query(
+    `DELETE from commessa_dipendente where id_commessa='${id_commessa}' `,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+  
+      } else {
+        //console.log(result);
+        res.send(result)
+      }
+    }
+  );
+});
+
+router.delete(`/commessaDelete/:id_commessa`, (req, res) => {
+  var id_commessa = req.params.id_commessa;
+  connectionDb.query(
+    `DELETE from commessa where id_commessa='${id_commessa}' `,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+  
+      } else {
+        //console.log(result);
+        res.send(result)
+      }
+    }
+  );
+});
+
+
   module.exports = router;

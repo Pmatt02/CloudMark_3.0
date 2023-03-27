@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, concatMap } from 'rxjs';
 import { Cliente } from 'src/app/modules/cliente';
 import { Commessa } from 'src/app/modules/commessa';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -25,6 +25,12 @@ export class CommesseComponent {
     this.commesse = this.clientiService.getCommessabyCustomerId(this.clienteId);
     })
 
+  }
+
+  deleteCommessa(id: any){
+    console.log(id)
+    this.clientiService.deleteLinkCommessa(id).pipe(concatMap(() => 
+    this.clientiService.deleteCommessa(id))).subscribe()
   }
 
 }

@@ -68,4 +68,10 @@ export class ClienteService {
     return this.http.post<any>(`${URL1}/dipendenteCommessaAdd/${id_dipendente}/${id_commessa}/${rate}`, null)
   }
 
+  deleteCommessa(id: string){
+    return this.http.delete<any>(`${URL1}/commessaDelete/${id}`)
+  }
+  deleteLinkCommessa(id: string){
+    return this.http.delete<any>(`${URL1}/commessaLinkDelete/${id}`)
+  }
 }
