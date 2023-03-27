@@ -27,13 +27,9 @@ export class ClienteComponent implements OnInit{
     })
     // console.log(this.cliente$);
     
-    this.router.paramMap.subscribe((param: ParamMap) => {
-      this.clienteId = this.router.snapshot.paramMap.get('id');
-      console.log(this.clienteId)
-      this.commesse=this.servizioCliente.getCustomersByCommessa(this.clienteId)
-      this.commesse.pipe(toArray()).subscribe(arra=>{this.numeroCommesse=arra[0].length})
+
       
-      })
+      
     }
     
 

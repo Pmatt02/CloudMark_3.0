@@ -74,7 +74,7 @@ router.get("/cliente", (req, res) => {
     );
   });
 
-  router.post(`/clienteAziendaAdd/:id_azienda-:id_cliente`, (req, res) => {
+  router.post(`/clienteAziendaAdd/:id_azienda/:id_cliente`, (req, res) => {
     var id_azienda= req.params.id_azienda;
     var id_cliente =req.params.id_cliente
     console.log(id_azienda, id_cliente)

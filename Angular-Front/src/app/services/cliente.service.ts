@@ -31,7 +31,7 @@ export class ClienteService {
   }
   
   addLinkCompany(id_azienda: string, id_cliente: string) {
-    return this.http.post<any>(`${URL1}/clienteAziendaAdd/${id_azienda}-${id_cliente}`, null)
+    return this.http.post<any>(`${URL1}/clienteAziendaAdd/${id_azienda}/${id_cliente}`, null)
   }
 
   // elimina cliente
@@ -63,5 +63,9 @@ export class ClienteService {
     return this.http.put<Commessa>(`${URL1}/commessaUpdate`, arg);
   }
 
+  linkToCommessa(id_dipendente: string, id_commessa: string, rate: string){
+    // return this.http.post<any>(`${URL}/dipendente/link`, args)
+    return this.http.post<any>(`${URL1}/dipendenteCommessaAdd/${id_dipendente}/${id_commessa}/${rate}`, null)
+  }
 
 }
