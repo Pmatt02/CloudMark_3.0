@@ -1,4 +1,4 @@
-export interface Dipendente{
+export interface Dipendente {
   id_dipendente: string;
   nome: string | null;
   cognome: string | null;

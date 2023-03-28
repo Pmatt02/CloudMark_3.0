@@ -4,6 +4,7 @@ import { Observable, pipe, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { URL, URL1 } from 'src/environments/config';
 import { Dipendente } from '../modules/dipendente';
+import { DipendenteResult } from '../modules/dipendente-result';
 
 @Injectable({
   providedIn: 'root',
@@ -42,14 +43,9 @@ export class AziendaService {
     // return this.http.put<Azienda[]>(`${URL}/azienda/update`, arg)
     return this.http.put<Azienda[]>(`${URL1}/aziendaUpdate`, arg);
   }
-  // ricercaDipendenteByName(elemento: any) {
-  //   return this.http.get<Dipendente[]>(
-  //     `${URL1}/ricercaDipendenteNome`,
-  //     elemento
-  //   );
-  // }
+  //ricerca dipendente
   ricercaDipendente(dipendente: any) {
-    return this.http.get<Dipendente[]>(
+    return this.http.get<DipendenteResult[]>(
       `${URL1}/ricercaDipendente/${dipendente}`
     );
   }
