@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { DipendenteResult } from 'src/app/modules/dipendente-result';
 import { AziendaService } from '../../services/azienda.service';
 
@@ -18,15 +18,31 @@ export class AziendaComponent {
   elemento!: string | number;
   dipendente!: string | number;
   dipendente$!: Observable<DipendenteResult[]>;
+  array: any = [];
+  lunghezza!: number;
 
   searchAll(dipendente: HTMLInputElement) {
     if (dipendente.value) {
       this.dipendente$ = this.aziendaService.ricercaDipendente(
         dipendente.value
       );
+      this.aziendaService
+        .ricercaDipendente(dipendente.value)
+        .subscribe((res) => {
+          this.array.push(res);
+        });
       this.is_display = true;
-      console.log(dipendente.value);
-      console.log(this.dipendente$);
+      this.lunghezza = this.array[this.array.length - 1].length;
+      console.log(this.lunghezza); //lunghezza dell'ultimo elemento dell'array di oggetti this.array[this.array.length - 1].length;
+      // console.log(this.array);
+      // console.log(this.array.length);
+      // console.log(this.is_display);
+      if (this.lunghezza == 0) {
+        this.is_display = false;
+        console.log(this.is_display);
+        // } else {
+        //   this.is_display = true;
+      }
     } else {
       this.is_display = false;
     }
