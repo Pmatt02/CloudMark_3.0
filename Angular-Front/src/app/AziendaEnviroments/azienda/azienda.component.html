@@ -54,7 +54,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let d of dipendente$ | async">
+          <tr
+            style="cursor: pointer"
+            *ngFor="let d of dipendente$ | async"
+            routerLink="aziendaDetails/{{ d.id_azienda }}"
+          >
             <th>{{ d.id_dipendente }}</th>
             <td>{{ d.nome }}</td>
             <td>{{ d.cognome }}</td>
