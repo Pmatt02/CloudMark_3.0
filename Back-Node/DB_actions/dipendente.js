@@ -167,4 +167,30 @@ router.get("/dipendente", (req, res) => {
     );
   });
 
+  router.get(`/ricercaDipendente/:dipendente` , (req, res) => {
+    var dipendente = req.params.dipendente;
+
+      connectionDb.query(
+   `SELECT d.id_dipendente, d_a.id_azienda, d.nome, d.cognome, d_a.matricola, d.cf, d.iban, d.id_tipo_contratto, d.email, d.telefono, d.data_nascita \
+                        FROM dipendente d \
+                        INNER JOIN dipendente_azienda d_a ON d.id_dipendente = d_a.id_dipendente \
+                        INNER JOIN azienda a ON d_a.id_azienda = a.id_azienda \
+                        WHERE d_a.matricola like '${dipendente}%' \
+                        OR d.nome like '${dipendente}%' \
+                        OR d.cognome like '${dipendente}%' \
+                        OR (concat(d.nome, ' ', d.cognome) like '${dipendente}%')  \
+                        OR (concat(d.cognome, ' ', d.nome) like '${dipendente}%')`,
+        (err, result) => {
+          if (err) {
+          console.log(err);
+    
+        } else {
+          console.log(result);
+          res.send(result)
+        }
+      }
+      )
+    
+  })
+
   module.exports = router;

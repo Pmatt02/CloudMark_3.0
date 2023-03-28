@@ -42,7 +42,15 @@ export class AziendaService {
     // return this.http.put<Azienda[]>(`${URL}/azienda/update`, arg)
     return this.http.put<Azienda[]>(`${URL1}/aziendaUpdate`, arg);
   }
-  ricercaDipendente(elemento: string) {
-    return this.http.get<Dipendente[]>(`${URL1}/ricercaDipendente`);
+  // ricercaDipendenteByName(elemento: any) {
+  //   return this.http.get<Dipendente[]>(
+  //     `${URL1}/ricercaDipendenteNome`,
+  //     elemento
+  //   );
+  // }
+  ricercaDipendente(dipendente: any) {
+    return this.http.get<Dipendente[]>(
+      `${URL1}/ricercaDipendente/${dipendente}`
+    );
   }
 }
