@@ -20,9 +20,15 @@ export class AziendaComponent {
   dipendente$!: Observable<DipendenteResult[]>;
 
   searchAll(dipendente: HTMLInputElement) {
-    this.dipendente$ = this.aziendaService.ricercaDipendente(dipendente.value);
-    console.log(dipendente.value);
-    console.log(this.dipendente$);
-    this.is_display = true;
+    if (dipendente.value) {
+      this.dipendente$ = this.aziendaService.ricercaDipendente(
+        dipendente.value
+      );
+      this.is_display = true;
+      console.log(dipendente.value);
+      console.log(this.dipendente$);
+    } else {
+      this.is_display = false;
+    }
   }
 }
