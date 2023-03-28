@@ -48,4 +48,7 @@ export class AziendaComponent {
       this.is_display = false;
     }
   }
+  chiudi(){
+    this.errore=false;
+  }
 }
