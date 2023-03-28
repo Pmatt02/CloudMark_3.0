@@ -18,7 +18,7 @@ export class AziendaComponent {
   elemento!: string | number;
   dipendente!: string | number;
   dipendente$!: Observable<DipendenteResult[]>;
-  array: any = [];
+  array: any[]=[''];
   lunghezza!: number;
 
   searchAll(dipendente: HTMLInputElement) {
@@ -30,19 +30,16 @@ export class AziendaComponent {
         .ricercaDipendente(dipendente.value)
         .subscribe((res) => {
           this.array.push(res);
+          this.lunghezza = this.array[this.array.length - 1].length;
+          console.log(this.lunghezza); //lunghezza dell'ultimo elemento dell'array di oggetti this.array[this.array.length - 1].length;
+        
+          if (this.lunghezza == 0) {
+            this.is_display = false;
+            console.log(this.is_display);
+          } else {
+            this.is_display = true;
+          }
         });
-      this.is_display = true;
-      this.lunghezza = this.array[this.array.length - 1].length;
-      console.log(this.lunghezza); //lunghezza dell'ultimo elemento dell'array di oggetti this.array[this.array.length - 1].length;
-      // console.log(this.array);
-      // console.log(this.array.length);
-      // console.log(this.is_display);
-      if (this.lunghezza == 0) {
-        this.is_display = false;
-        console.log(this.is_display);
-        // } else {
-        //   this.is_display = true;
-      }
     } else {
       this.is_display = false;
     }
