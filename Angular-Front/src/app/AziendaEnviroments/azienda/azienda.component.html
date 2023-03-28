@@ -43,6 +43,9 @@
     </div>
   </nav>
   <!-- Search Results -->
+  <div class="alert alert-warning" *ngIf="errore" role="alert">
+    La ricerca non ha prodotto risultati.
+  </div>
   <div *ngIf="is_display">
     <h2 class="text-dark">Dipendenti</h2>
     <div>
