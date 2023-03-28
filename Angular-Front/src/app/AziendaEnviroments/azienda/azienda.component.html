@@ -28,9 +28,10 @@
         <input
           class="form-control me-2"
           type="search"
-          placeholder="Cognome "
+          placeholder="Inizia a digitare..."
           aria-label="Cerca dipendente per nome"
           #valoreDipendente
+          (input)="searchAll(valoreDipendente)"
         />
         <button
           class="btn btn-outline-dark"

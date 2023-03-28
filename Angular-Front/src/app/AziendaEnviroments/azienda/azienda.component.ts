@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DipendenteResult } from 'src/app/modules/dipendente-result';
@@ -22,6 +22,7 @@ export class AziendaComponent {
   searchAll(dipendente: HTMLInputElement) {
     this.dipendente$ = this.aziendaService.ricercaDipendente(dipendente.value);
     console.log(dipendente.value);
+    console.log(this.dipendente$);
     this.is_display = true;
   }
 }
