@@ -26,19 +26,45 @@
       <a class="navbar-brand">Cerca Dipendente</a>
       <form class="d-flex" role="search">
         <input
-          (keydown.enter)="search(valoreRicerca)"
           class="form-control me-2"
           type="search"
-          placeholder="Cerca dipendente..."
-          aria-label="Cerca dipendente..."
-          #valoreRicerca
+          placeholder="Cognome "
+          aria-label="Cerca dipendente per nome"
+          #valoreDipendente
         />
-        <button class="btn btn-outline-dark" (click)="search(valoreRicerca)">
+        <button
+          class="btn btn-outline-dark"
+          (click)="searchAll(valoreDipendente)"
+        >
           Cerca!
         </button>
       </form>
     </div>
   </nav>
+  <!-- Search Results -->
+  <div *ngIf="is_display">
+    <h2 class="text-dark">Dipendenti</h2>
+    <div>
+      <table class="table">
+        <thead class="bg-dark text-white">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome dipendente</th>
+            <th scope="col">Cognome dipendente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of dipendente$ | async">
+            <th>{{ d.id_dipendente }}</th>
+            <td>{{ d.nome }}</td>
+            <td>{{ d.cognome }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+    </div>
+  </div>
+
   <!-- Project One -->
   <div class="row" *ngFor="let e of aziende | async">
     <div class="col-md-7">
