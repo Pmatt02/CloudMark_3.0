@@ -19,6 +19,7 @@ export class AddClienteComponent implements OnInit{
   ngOnInit(): void {
     this.aziendaId = this.route.snapshot.paramMap.get('id')
     console.log(this.aziendaId)
+    window.history.replaceState("", "", '/AggiungiCliente');
   }
 
 

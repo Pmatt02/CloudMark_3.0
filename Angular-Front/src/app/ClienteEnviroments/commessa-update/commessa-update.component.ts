@@ -22,6 +22,7 @@ export class CommessaUpdateComponent implements OnInit{
       this.commessaID = this.route.snapshot.paramMap.get('id');
       this.commessa = this.clienteService.getCommessaById(this.commessaID);
       console.log(this.commessa)
+      window.history.replaceState("", "", '/ModificaCommessa');
     })
   }
 

@@ -22,6 +22,7 @@ export class UpdateAziendaComponent implements OnInit{
     this.route.paramMap.subscribe((param: ParamMap) => {
       this.aziendaID = this.route.snapshot.paramMap.get('id');
       this.azienda = this.aziendaService.getCompanyById(this.aziendaID);
+      window.history.replaceState("", "", '/ModificaAzienda');
     })
   }
 

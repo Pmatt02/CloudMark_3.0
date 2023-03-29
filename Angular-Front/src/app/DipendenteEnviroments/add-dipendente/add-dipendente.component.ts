@@ -28,7 +28,7 @@ export class AddDipendenteComponent implements OnInit{
                 console.log(this.dipendenteId)
                 this.id=this.dipendenteId
                 console.log(this.id)
-
+                window.history.replaceState("", "", '/AggiungiDipendente');
               };
 
   aggiungiDipendente(dipendente: {id_dipendente: string, nome: string, cognome: string, cf:string, iban: string,

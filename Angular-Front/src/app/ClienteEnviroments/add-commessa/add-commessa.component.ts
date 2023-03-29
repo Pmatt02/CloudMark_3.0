@@ -22,6 +22,7 @@ export class AddCommessaComponent implements OnInit{
   ngOnInit(): void {
     this.clienteId=this.route.snapshot.paramMap.get('id');
     this.cliente=this.servizioCliente.getCustomersById(this.clienteId);
+    window.history.replaceState("", "", '/AggiungiCommessa');
   }
 
   addCommessa(form1: FormGroup, form2: FormGroup){

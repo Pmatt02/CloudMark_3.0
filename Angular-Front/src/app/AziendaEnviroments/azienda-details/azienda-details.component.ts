@@ -23,6 +23,7 @@ export class AziendaDetailsComponent implements OnInit{
     this.router.paramMap.subscribe((param: ParamMap) => {
     this.aziendaId = this.router.snapshot.paramMap.get('id');
     this.azienda$ = this.aziendaService.getCompanyById(param.get('id')!);
+    window.history.replaceState("", "", '/DettaglioAzienda');
     })
 
   }

@@ -24,6 +24,7 @@ ngOnInit(): void {
   this.route.paramMap.subscribe((param: ParamMap) => {
     this.dipendente_Id = this.route.snapshot.paramMap.get('id');
     this.dipendente$ = this.servizioDipendente.getEmployeeById(this.dipendente_Id)
+    window.history.replaceState("", "", '/ModificaDipendente');
   })
   console.log(this.dipendente$);
  }

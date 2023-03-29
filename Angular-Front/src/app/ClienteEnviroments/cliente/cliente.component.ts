@@ -26,6 +26,7 @@ export class ClienteComponent implements OnInit{
     this.router.paramMap.subscribe((param: ParamMap) => {
       this.clienteId = this.router.snapshot.paramMap.get('id');
       this.cliente$ = this.servizioCliente.getCustomersByAzienda(this.clienteId)
+      //window.history.replaceState("", "", '/Cliente');
     })
     // console.log(this.cliente$);
     

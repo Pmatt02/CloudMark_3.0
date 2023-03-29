@@ -20,6 +20,7 @@ export class DipendenteComponent implements OnInit{
     this.router.paramMap.subscribe((param: ParamMap) => {
       this.dipendenteId = this.router.snapshot.paramMap.get('id');
       this.dipendente$ = this.servizioDipendente.getEmployeesByIdAzienda(this.dipendenteId)
+//      window.history.replaceState("", "", '/Dipendenti');
     })
     console.log(this.dipendente$);
 

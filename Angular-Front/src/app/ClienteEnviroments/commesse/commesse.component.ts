@@ -23,6 +23,7 @@ export class CommesseComponent {
     this.clienteId = this.router.snapshot.paramMap.get('id');
     this.Clienti$ = this.clientiService.getCustomersById(param.get('id')!);
     this.commesse = this.clientiService.getCommessabyCustomerId(this.clienteId);
+    window.history.replaceState("", "", '/Commesse');
     })
 
   }

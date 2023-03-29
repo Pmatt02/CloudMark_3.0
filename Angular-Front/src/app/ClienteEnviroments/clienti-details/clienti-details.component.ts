@@ -20,6 +20,7 @@ export class ClientiDetailsComponent {
     this.router.paramMap.subscribe((param: ParamMap) => {
     this.clienteId = this.router.snapshot.paramMap.get('id');
     this.Clienti$ = this.clientiService.getCustomersById(param.get('id')!);
+    window.history.replaceState("", "", '/DettaglioCliente');
     })
 
   }
