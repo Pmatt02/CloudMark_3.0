@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import * as Papa from 'papaparse';
 import { Observable } from 'rxjs';
 import { Dipendente } from 'src/app/modules/dipendente';
 import { DipendenteService } from 'src/app/services/dipendente.service';
+import {saveAs} from 'file-saver';
 
 @Component({
   selector: 'app-dipendente',
@@ -30,5 +32,13 @@ export class DipendenteComponent implements OnInit{
     this.servizioDipendente.deleteLink(id_dipendente, id_azienda).subscribe((res)=>{console.log(res)})
     console.log(id_azienda, id_dipendente)
 
+  }
+
+  downloadFile() {
+    this.servizioDipendente.getEmployeesByIdAzienda(this.dipendenteId).subscribe((data: Dipendente[]) => {
+      const csvData = Papa.unparse(data);
+      const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+      saveAs(blob, 'file.csv');
+    })
   }
 }
