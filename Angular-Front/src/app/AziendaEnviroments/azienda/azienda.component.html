@@ -43,11 +43,12 @@
     </div>
   </nav>
   <!-- Search Results -->
+  
   <div class="alert alert-warning alert-dismissible fade show" *ngIf="errore" role="alert">
     <strong>Attenzione!</strong> La ricerca non ha prodotto risultati.
     <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="chiudi()"></button>
   </div>
-  <div *ngIf="is_display">
+  <div *ngIf="is_display" >
     <h2 class="text-dark">Dipendenti</h2>
     <div>
       <table class="table">
