@@ -171,13 +171,15 @@ router.get("/dipendente", (req, res) => {
     var dipendente = req.params.dipendente;
 
       connectionDb.query(
-   `SELECT d.id_dipendente, d_a.id_azienda, d.nome, d.cognome, d_a.matricola, d.cf, d.iban, d.id_tipo_contratto, d.email, d.telefono, d.data_nascita \
+   `SELECT t_p.nome_tipo_contratto, d.id_dipendente, d_a.id_azienda, d.nome, d.cognome, d_a.matricola, d.cf, d_a.data_inizio_rapporto, d.id_tipo_contratto \
                         FROM dipendente d \
                         INNER JOIN dipendente_azienda d_a ON d.id_dipendente = d_a.id_dipendente \
                         INNER JOIN azienda a ON d_a.id_azienda = a.id_azienda \
+                        INNER JOIN tipo_contratto t_p ON t_p.id_tipo_contratto = d.id_tipo_contratto
                         WHERE d_a.matricola like '${dipendente}%' \
                         OR d.nome like '${dipendente}%' \
                         OR d.cognome like '${dipendente}%' \
+                        OR d.cf like '${dipendente}%' \
                         OR (concat(d.nome, ' ', d.cognome) like '${dipendente}%')  \
                         OR (concat(d.cognome, ' ', d.nome) like '${dipendente}%')`,
         (err, result) => {

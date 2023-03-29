@@ -4,7 +4,7 @@ const router = express.Router();
 const connectionDb = require("../src/db");
 const bodyParser = require('body-parser');
 const server = require("../src/server");
-var Azienda = require("../models/aziendaModel");
+//var Azienda = require("../models/aziendaModel");
 
 
 router.use(bodyParser.urlencoded({ extended: false }));

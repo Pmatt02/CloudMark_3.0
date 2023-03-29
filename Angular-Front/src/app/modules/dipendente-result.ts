@@ -9,4 +9,7 @@ export interface DipendenteResult {
   email: string;
   telefono: string;
   data_nascita: Date;
+  data_inizio_rapporto: Date;
+  matricola: string | null;
+  nome_tipo_contratto: string;
 }

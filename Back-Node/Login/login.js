@@ -2,7 +2,9 @@ const express = require("express");
 const session = require("express-session");
 const app = express();
 const flash = require('connect-flash');
-const connectionDb = require('./db');
+const connectionDb = require('../src/db');
+const router = express.Router();
+const path = require('path')
 var insertMail = '';
 var insertPassword = '';
 var id = 'ciao';
@@ -15,9 +17,9 @@ let checks=(args)=>{
     }
 }
 
-app.use(flash());
-app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
+router.use(flash());
+router.use(express.static('public'));
+router.use(express.urlencoded({ extended: true }));
 
 // const errMsg = document.getElementById("err_msg");
 
@@ -25,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 const porta = 3000;
 
 
-app.use(session({
+router.use(session({
     secret: 'secret',
     resave: false,
     saveUninitialized: true
@@ -38,17 +40,12 @@ if (!req.session.userId || req.session.userId== undefined) {
     next();
 }}
 
-
-app.listen(porta, () => {
-  console.log("server avviato sulla porta " + porta);
-})
-
-app.get("/login", (req, res) => {
+router.get("/login", (req, res) => {
     req.session.userId = undefined;
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(path.join(__dirname, "../index.html"));
 })
 
-app.post("/login", (req, res) => {
+router.post("/login", (req, res) => {
     var emaill = req.body.email;
     var passwordd = req.body.password;
     insertMail = emaill;
@@ -71,8 +68,8 @@ app.post("/login", (req, res) => {
                     res.redirect('/home');
                 } else {
                     console.log('Credenziali Sbagliate');
-                    res.send("<script>alert('Credenziali Errate');window.location.replace('/login')</script>");
-                    app.get("/login", (req, res) => {
+                    res.send("<script>window.alert('Credenziali Errate');window.location.replace('/login')</script>");
+                    router.get("/login", (req, res) => {
                         req.session.userId = undefined;
                         res.sendFile(__dirname + "/index.html");
                     })
@@ -85,11 +82,11 @@ app.post("/login", (req, res) => {
     // console.log("Password: " + passwordd)
 })
 
-app.get('/home', checkAuth, (req, res) => {
+router.get('/home', checkAuth, (req, res) => {
     res.redirect("http://localhost:4200");
 })
 
-const getCompanyById = app.get("/azienda", (req, res) => {
+const getCompanyById = router.get("/azienda", (req, res) => {
     connectionDb.query(`SELECT * FROM azienda WHERE id_azienda = '${id}' `,(err, res) => {
            if(err) {
 
@@ -103,3 +100,5 @@ const getCompanyById = app.get("/azienda", (req, res) => {
        })
     }
 );
+
+module.exports = router;

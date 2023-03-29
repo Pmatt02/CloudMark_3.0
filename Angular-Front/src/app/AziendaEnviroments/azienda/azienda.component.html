@@ -1,19 +1,3 @@
-<!-- <div class="m-5 col-5">
-  <h2 class="text-dark">Lista Aziende</h2>
-<table class="table ">
-    <thead class="bg-dark text-white">
-      <tr>
-        <th scope="col" >Nome</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let e of aziende | async">
-      <tr>
-        <th>{{e.nome}}</th>
-      </tr>
-    </tbody>
-</table><br>
-</div> -->
-
 <div class="container">
   <!-- Page Heading -->
   <h1 class="my-4">
@@ -54,9 +38,12 @@
       <table class="table">
         <thead class="bg-dark text-white">
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nome dipendente</th>
             <th scope="col">Cognome dipendente</th>
+            <th scope="col">Nome dipendente</th>
+            <th scope="col">Matricola</th>
+            <th scope="col">Contratto</th>
+            <th scope="col">Assunzione</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -65,9 +52,14 @@
             *ngFor="let d of dipendente$ | async"
             routerLink="aziendaDetails/{{ d.id_azienda }}"
           >
-            <th>{{ d.id_dipendente }}</th>
+            <th>{{ d.cognome }}</th>
             <td>{{ d.nome }}</td>
-            <td>{{ d.cognome }}</td>
+            <td>{{ d.matricola }}
+            <!-- <td *ngIf = "d.id_tipo_contratto as '198ef11d-cf73-4245-8469-2ddfa9979acf'; else elseBlock">Indeterminato</td>
+            <ng-template #elseBlock> Determinato</ng-template> -->
+            <td>{{d.nome_tipo_contratto}}</td>
+            <td>{{ d.data_inizio_rapporto }}</td>
+    
           </tr>
         </tbody>
       </table>
