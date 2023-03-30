@@ -9,7 +9,7 @@ import { Commessa } from '../modules/commessa';
   providedIn: 'root'
 })
 export class ClienteService {
-  
+
   constructor(private http: HttpClient) { };
   // tutti i clienti
   getAllCustomers(): Observable<Cliente[]> {
@@ -19,7 +19,7 @@ export class ClienteService {
   getCustomersById(id: string) {
     return this.http.get<Cliente>(`${URL1}/cliente/${id}`);
   }
-  
+
   // aggiungi cliente
   addCustomers(arg: any){
     // return  this.http.post<Cliente[]>(`${URL}/cliente/new`, arg)
@@ -29,7 +29,7 @@ export class ClienteService {
     // return  this.http.post<Cliente[]>(`${URL}/cliente/new`, arg)
     return  this.http.post<Commessa>(`${URL1}/commessaAggiungi`, arg)
   }
-  
+
   addLinkCompany(id_azienda: string, id_cliente: string) {
     return this.http.post<any>(`${URL1}/clienteAziendaAdd/${id_azienda}/${id_cliente}`, null)
   }
@@ -73,5 +73,8 @@ export class ClienteService {
   }
   deleteLinkCommessa(id: string){
     return this.http.delete<any>(`${URL1}/commessaLinkDelete/${id}`)
+  }
+  ricercaCliente(id: string){
+    return this.http.get<Cliente[]>(`${URL1}/ricercaCliente/${id}`)
   }
 }

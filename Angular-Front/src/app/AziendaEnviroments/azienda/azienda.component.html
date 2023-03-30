@@ -15,11 +15,11 @@
           placeholder="Inizia a digitare..."
           aria-label="Cerca dipendente per nome"
           #valoreDipendente
-          (input)="searchAll(valoreDipendente)"
+          (input)="searchDipendente(valoreDipendente)"
         />
         <button
           class="btn btn-outline-dark"
-          (click)="searchAll(valoreDipendente)"
+          (click)="searchDipendente(valoreDipendente)"
         >
           Cerca!
         </button>
@@ -27,7 +27,7 @@
     </div>
   </nav>
   <!-- Search Results -->
-  
+
   <div class="alert alert-warning alert-dismissible fade show" *ngIf="errore" role="alert">
     <strong>Attenzione!</strong> La ricerca non ha prodotto risultati.
     <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="chiudi()"></button>
@@ -43,7 +43,7 @@
             <th scope="col">Matricola</th>
             <th scope="col">Contratto</th>
             <th scope="col">Assunzione</th>
-            
+
           </tr>
         </thead>
         <tbody>
@@ -59,7 +59,69 @@
             <ng-template #elseBlock> Determinato</ng-template> -->
             <td>{{d.nome_tipo_contratto}}</td>
             <td>{{ d.data_inizio_rapporto }}</td>
-    
+
+          </tr>
+        </tbody>
+      </table>
+      <br />
+    </div>
+  </div>
+
+  <!-- SearchBar Clienti -->
+  <nav class="navbar bg-light my-5 rounded-2">
+    <div class="container-fluid">
+      <a class="navbar-brand">Cerca Cliente</a>
+      <form class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Inizia a digitare..."
+          aria-label="Cerca cliente"
+          #valoreCliente
+          (input)="searchCliente(valoreCliente)"
+        />
+        <button
+          class="btn btn-outline-dark"
+          (click)="searchCliente(valoreCliente)"
+        >
+          Cerca!
+        </button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Search Results Clienti-->
+
+  <div class="alert alert-warning alert-dismissible fade show" *ngIf="errore2" role="alert">
+    <strong>Attenzione!</strong> La ricerca non ha prodotto risultati.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="chiudi()"></button>
+  </div>
+  <div *ngIf="is_display2" >
+    <h2 class="text-dark">Clienti</h2>
+    <div>
+      <table class="table">
+        <thead class="bg-dark text-white">
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Partita iva</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefono</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            style="cursor: pointer"
+            *ngFor="let c of cliente$ | async"
+            routerLink="clienteCommessa/{{ c.id_cliente }}"
+          >
+            <th>{{ c.nome }}</th>
+            <td>{{ c.p_iva }}</td>
+            <td>{{ c.email }}
+            <!-- <td *ngIf = "d.id_tipo_contratto as '198ef11d-cf73-4245-8469-2ddfa9979acf'; else elseBlock">Indeterminato</td>
+            <ng-template #elseBlock> Determinato</ng-template> -->
+            <td>{{ c.telefono }}</td>
+
           </tr>
         </tbody>
       </table>

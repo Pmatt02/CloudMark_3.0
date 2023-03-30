@@ -206,5 +206,26 @@ router.delete(`/commessaDelete/:id_commessa`, (req, res) => {
   );
 });
 
+router.get(`/ricercaCliente/:cliente` , (req, res) => {
+  var cliente = req.params.cliente;
+
+    connectionDb.query(
+        `SELECT * \
+        FROM cliente c \
+        WHERE c.nome like '${cliente}%' \
+        OR c.p_iva like '${cliente}%'`,
+      (err, result) => {
+        if (err) {
+        console.log(err);
+  
+      } else {
+        console.log(result);
+        res.send(result)
+      }
+    }
+    )
+  
+})
+
 
   module.exports = router;
