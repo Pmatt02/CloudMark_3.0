@@ -194,5 +194,36 @@ router.get("/dipendente", (req, res) => {
       )
     
   })
+  router.get('/account', (req, res)=>{
+    connectionDb.query('select a.id_account, user,d.nome, d.cognome, d.cf, email, password, abilitato, nome_tipo_account from account a \
+    inner join account_dipendente ad on ad.id_account = a.id_account \
+    inner join tipo_account ta on a.id_tipo_account = ta.id_tipo_account\
+    inner join dipendente d on d.id_dipendente=ad.id_dipendente', (err, result)=>{
+      if(err){
+        console.log(err);
+      } else {
+        console.log(result);
+        res.send(result);
+      }
+    }
+  )})
 
+  router.post(`/accountUpdate/:abilitato/:id_account`, (req, res) => {
+    var abilitato= req.params.abilitato;
+    var id_account= req.params.id_account
+    connectionDb.query(
+      `UPDATE account\
+      SET abilitato='${abilitato}'\
+          WHERE id_account='${id_account}'`,
+      (err, result) => {
+        if (err) {
+          console.log(err);
+    
+        } else {
+          console.log(result);
+          res.send(result)
+        }
+      }
+    );
+  });
   module.exports = router;

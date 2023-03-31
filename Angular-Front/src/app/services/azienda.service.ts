@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { URL, URL1 } from 'src/environments/config';
 import { Dipendente } from '../modules/dipendente';
 import { DipendenteResult } from '../modules/dipendente-result';
+import { Account } from '../modules/account';
 
 @Injectable({
   providedIn: 'root',
@@ -51,5 +52,16 @@ export class AziendaService {
   }
   getCredentials() {
     return this.http.get<any>(`${URL1}/credentials`);
+  }
+
+  getAccount() {
+    return this.http.get<Account[]>(`${URL1}/account`);
+  }
+
+  getUser() {
+    return this.http.get<Account>(`${URL1}/user`);
+  }
+  updateUser(abilitato: any, id_account: any) {
+    return this.http.post<Account>(`${URL1}/accountUpdate/${abilitato}/${id_account}`, null);
   }
 }

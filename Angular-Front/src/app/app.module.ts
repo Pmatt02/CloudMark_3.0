@@ -19,6 +19,7 @@ import { ClientiDetailsComponent } from './ClienteEnviroments/clienti-details/cl
 import { CommesseComponent } from './ClienteEnviroments/commesse/commesse.component';
 import { CommessaUpdateComponent } from './ClienteEnviroments/commessa-update/commessa-update.component';
 import { AddCommessaComponent } from './ClienteEnviroments/add-commessa/add-commessa.component';
+import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { AddCommessaComponent } from './ClienteEnviroments/add-commessa/add-comm
     ClientiDetailsComponent,
     CommesseComponent,
     CommessaUpdateComponent,
-    AddCommessaComponent
+    AddCommessaComponent,
+    AdminpanelComponent
     ],
   imports: [
     BrowserModule , HttpClientModule, AppRoutingModule, FormsModule

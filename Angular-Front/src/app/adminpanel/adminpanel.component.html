@@ -1,0 +1,15 @@
+<p>adminpanel works!</p>
+<div *ngFor="let a of accounts$ | async">
+    <div>{{a.user}}</div>
+    <div>{{a.nome}}</div>
+    <div>{{a.cognome}}</div>
+    <div>{{a.cf}}</div>
+    <div>{{a.email}}</div>
+    <div>{{a.password}}</div>
+    <div>{{a.abilitato}}</div>
+    <div>{{a.nome_tipo_account}}</div>
+    <select id="abilitato" name="abilitato" ngModel #abilitato="ngModel" (change)="modify(abilitato.value, a.id_account)">
+        <option value="0">Disabilitato</option>
+        <option value="1">Abilitato</option>
+      </select>
+</div>

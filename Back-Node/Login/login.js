@@ -125,4 +125,18 @@ const getCompanyById = router.get("/azienda", (req, res) => {
     }
 );
 
+router.get('/user', (req, res)=>{
+    connectionDb.query(`select user,d.nome, d.cognome, d.cf, email, password, abilitato, nome_tipo_account from account a \
+    inner join account_dipendente ad on ad.id_account = a.id_account \
+    inner join tipo_account ta on a.id_tipo_account = ta.id_tipo_account\
+    inner join dipendente d on d.id_dipendente=ad.id_dipendente where email = '${emaill}' and password = '${passwordd}'`, (err, result)=>{
+      if(err){
+        console.log(err);
+      } else {
+        console.log(result);
+        res.send(result[0]);
+      }
+    }
+)})
+
 module.exports = router;
