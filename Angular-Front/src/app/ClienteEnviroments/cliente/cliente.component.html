@@ -1,6 +1,6 @@
 <h2 class="text-dark">Clienti</h2>
 <div>
-  <table class="table ">
+  <table class="table">
     <thead class="bg-dark text-white">
       <tr>
         <th scope="col">ID</th>
@@ -17,27 +17,51 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of cliente$ | async" >
-        <th>{{c.id_cliente}}</th>
-        <td>{{c.nome}}</td>
-        <td>{{c.p_iva}}</td>
-        <td>{{c.indirizzo}}</td>
-        <td>{{c.cap}}</td>
-        <td>{{c.iban}}</td>
-        <td>{{c.telefono}}</td>
-        <td>{{c.email}}</td>
-        <td>{{c.pec}}</td>
-        <td>{{c.fax}}</td>
-        <td *ngIf="numeroCommesse">{{numeroCommesse}}</td>
-        <button type="button" class="btn bg-dark text-white" routerLink="/updateCliente/{{c.id_cliente}}" *ngIf="permissions">Modifica</button>
-        <button type="button" class="btn bg-dark text-white" routerLink="/clienteCommessa/{{c.id_cliente}}" >Dettagli</button>
+      <tr *ngFor="let c of cliente$ | async">
+        <th>{{ c.id_cliente }}</th>
+        <td>{{ c.nome }}</td>
+        <td>{{ c.p_iva }}</td>
+        <td>{{ c.indirizzo }}</td>
+        <td>{{ c.cap }}</td>
+        <td>{{ c.iban }}</td>
+        <td>{{ c.telefono }}</td>
+        <td>{{ c.email }}</td>
+        <td>{{ c.pec }}</td>
+        <td>{{ c.fax }}</td>
+        <td *ngIf="numeroCommesse">{{ numeroCommesse }}</td>
+        <button
+          type="button"
+          class="btn bg-dark text-white my-2"
+          routerLink="/updateCliente/{{ c.id_cliente }}"
+          *ngIf="permissions"
+        >
+          Modifica
+        </button>
+        <button
+          type="button"
+          class="btn bg-dark text-white my-2"
+          routerLink="/clienteCommessa/{{ c.id_cliente }}"
+        >
+          Dettagli
+        </button>
       </tr>
-      <button type="button" class="btn bg-dark text-white" (click)="downloadFile()" >CSV</button>
-
+      <button
+        type="button"
+        class="btn bg-dark text-white"
+        (click)="downloadFile()"
+      >
+        CSV
+      </button>
     </tbody>
-  </table><br>
+  </table>
+  <br />
 
-  <button type="button" class="btn btn-dark" routerLink="/addCliente/{{idaz}}" *ngIf="permissions">Aggiungi</button>
-  
+  <button
+    type="button"
+    class="btn btn-dark"
+    routerLink="/addCliente/{{ idaz }}"
+    *ngIf="permissions"
+  >
+    Aggiungi
+  </button>
 </div>
-
