@@ -1,3 +1,90 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!-- Team -->
+<section id="team" class="pb-5">
+    <div class="container">
+
+        <h5 class="section-title h1">LISTA AZIENDE</h5>
+
+        <div class="row" >
+          
+          <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let e of aziende | async">
+
+              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+
+                  <div class="mainflip">
+
+                    <div class="frontside">
+
+                      <div class="card">
+
+                        <div class="card-body text-center">
+
+                          <h4 class="card-title text-capitalize">{{e.nome}}</h4>
+                          <p class="card-text text-capitalize">{{e.indirizzo}}</p>
+                          <p class="card-text">{{e.email}}</p>
+                          <p><img class=" img-fluid" src="https://images.unsplash.com/photo-1489447068241-b3490214e879?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a85cb0d68de38ae2aa00d8a9663a320a&auto=format&fit=crop&w=1350&q=80" alt="card image"></p>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="backside">
+
+                        <div class="card">
+
+                            <div class="card-body text-capitalize text-center mt-4">
+
+                              <h4 class="card-title">{{e.nome}}</h4>
+                              <p class="card-text">
+
+                                <button class="btn btn-primary" routerLink="aziendaDetails/{{ e.id_azienda }}">
+                                  Info
+                                </button>
+                              
+                              </p>
+
+                              <ul class="list-inline">
+
+                              </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                  </div>
+
+              </div>
+
+          </div>
+          <!-- ./Team member -->
+
+        </div>
+    </div>
+</section>
+<!-- Team -->
+
+
+
+
+
+
+
+
+<!-- ___________________________________________________________________________ -->
+
+
+
+
+
+
+
 <div class="container">
   <!-- Page Heading -->
   <h1 class="my-4">
@@ -144,16 +231,11 @@
         totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque
         eveniet unde.
       </p>
-      <button
-        class="btn btn-dark"
-        routerLink="aziendaDetails/{{ e.id_azienda }}"
-      >
-        Info
-      </button>
+      
     </div>
   </div>
   <!-- /.row -->
 
   <hr />
   <button class="btn btn-dark" routerLink="addAzienda">Aggiungi Azienda</button>
-</div>
+</div> 
