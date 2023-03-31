@@ -15,6 +15,14 @@ export class AziendaComponent implements OnInit{
 
   ngOnInit(): void {
     window.history.replaceState("", "", '/Aziende');
+    this.aziendaService.getCredentials().subscribe((data) => {
+      console.log(data.abilitato);
+      if (data.abilitato == 1) {
+        this.permissions = true;
+      } else {
+        this.permissions = false;
+      }
+    })
   }
 
   aziende = this.aziendaService.getAllCompanies();
@@ -34,6 +42,9 @@ export class AziendaComponent implements OnInit{
   lunghezza!: number;
   dipendentidisplay: boolean = false;
   clientidisplay: boolean = false;
+  permissions: boolean = false;
+
+
 
   searchDipendente(dipendente: HTMLInputElement) {
     if (dipendente.value) {

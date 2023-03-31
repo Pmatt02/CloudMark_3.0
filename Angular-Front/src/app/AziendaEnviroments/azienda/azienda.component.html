@@ -4,7 +4,7 @@
 <!------ Include the above in your HEAD tag ---------->
 <div class="">
   <!-- Page Heading -->
-  <div  class="frontside">
+  <div  class="frontside" *ngIf="permissions">
   <p>Ricerca: </p>
   <input type="radio" name="search" (click)="showDipendente()">
   <label for="html">Dipendenti</label>

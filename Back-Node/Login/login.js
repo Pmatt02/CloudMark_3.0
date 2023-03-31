@@ -8,6 +8,8 @@ const path = require('path')
 var insertMail = '';
 var insertPassword = '';
 var id = 'ciao';
+var emaill;
+var passwordd;
 
 let checks=(args)=>{
     for(let i in args){
@@ -46,8 +48,8 @@ router.get("/login", (req, res) => {
 })
 
 router.post("/login", (req, res) => {
-    var emaill = req.body.email;
-    var passwordd = req.body.password;
+    emaill = req.body.email;
+    passwordd = req.body.password;
     insertMail = emaill;
     insertPassword = passwordd;
 
@@ -81,6 +83,27 @@ router.post("/login", (req, res) => {
     // console.log("Email: " + emaill)
     // console.log("Password: " + passwordd)
 })
+
+router.get('/credentials', (req, res) => {
+    
+    connectionDb.query(
+        `select email, password, abilitato from account a \
+        inner join account_dipendente ad on ad.id_account = a.id_account \
+        inner join dipendente d on d.id_dipendente=ad.id_dipendente where email = '${emaill}' and password = '${passwordd}'`,
+        (err, result) => {
+            if (err) {
+                return console.log(err);
+            }
+            else {
+                console.log(result)
+                res.send(result[0]);
+            }
+        }
+
+    )
+    
+})
+
 
 router.get('/home', checkAuth, (req, res) => {
     res.redirect("http://localhost:4200");

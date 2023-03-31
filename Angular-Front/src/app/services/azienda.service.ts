@@ -49,4 +49,7 @@ export class AziendaService {
       `${URL1}/ricercaDipendente/${dipendente}`
     );
   }
+  getCredentials() {
+    return this.http.get<any>(`${URL1}/credentials`);
+  }
 }
