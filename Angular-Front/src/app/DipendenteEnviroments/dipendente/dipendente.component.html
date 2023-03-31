@@ -25,11 +25,11 @@
         <td>{{d.email}}</td>
         <td>{{d.telefono}}</td>
         <td>{{d.data_nascita}}</td>
-        <button  class="btn bg-dark text-white m-2" (click)="deleteEmployee(d.id_dipendente, idaz)">Elimina</button>
-        <button  class="btn bg-dark text-white m-2" routerLink="/dipendenteUpdate/{{d.id_dipendente}}">Modifica</button>
+        <button  class="btn bg-dark text-white m-2" (click)="deleteEmployee(d.id_dipendente, idaz)" *ngIf="permissions">Elimina</button>
+        <button  class="btn bg-dark text-white m-2" routerLink="/dipendenteUpdate/{{d.id_dipendente}}" *ngIf="permissions">Modifica</button>
       </tr>
     </tbody>
   </table><br>
   <button  class="btn bg-dark text-white m-2" (click)="downloadFile()">CSV</button>
-  <button type="button" class="btn btn-dark" routerLink="/addDipendente/{{idaz}}">Aggiungi</button>
+  <button type="button" class="btn btn-dark" routerLink="/addDipendente/{{idaz}}" *ngIf="permissions">Aggiungi</button>
 </div>

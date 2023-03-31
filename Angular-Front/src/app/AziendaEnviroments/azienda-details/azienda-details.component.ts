@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class AziendaDetailsComponent implements OnInit{
   azienda$!: Observable<Azienda>;
   @Input() aziendaId!: any;
+  permissions: boolean = false; 
   
 
   constructor(private router: ActivatedRoute, private aziendaService: AziendaService){
@@ -24,6 +25,14 @@ export class AziendaDetailsComponent implements OnInit{
     this.aziendaId = this.router.snapshot.paramMap.get('id');
     this.azienda$ = this.aziendaService.getCompanyById(param.get('id')!);
     window.history.replaceState("", "", '/DettaglioAzienda');
+    this.aziendaService.getCredentials().subscribe((data) => {
+      console.log(data.abilitato);
+      if (data.abilitato == 1) {
+        this.permissions = true;
+      } else {
+        this.permissions = false;
+      }
+    })
     })
 
   }

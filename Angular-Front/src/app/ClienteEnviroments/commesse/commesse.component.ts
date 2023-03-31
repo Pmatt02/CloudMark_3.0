@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable, concatMap } from 'rxjs';
 import { Cliente } from 'src/app/modules/cliente';
 import { Commessa } from 'src/app/modules/commessa';
+import { AziendaService } from 'src/app/services/azienda.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class CommesseComponent {
   Clienti$!: Observable<Cliente>;
   clienteId!: any;
   commesse !: Observable<Commessa[]>
-  constructor(private router: ActivatedRoute, private clientiService: ClienteService){
+  permissions: boolean=false;
+  constructor(private router: ActivatedRoute, private clientiService: ClienteService, private aziendaService: AziendaService){
 
   }
   ngOnInit(): void {
@@ -24,6 +26,14 @@ export class CommesseComponent {
     this.Clienti$ = this.clientiService.getCustomersById(param.get('id')!);
     this.commesse = this.clientiService.getCommessabyCustomerId(this.clienteId);
     window.history.replaceState("", "", '/Commesse');
+    })
+    this.aziendaService.getCredentials().subscribe((data) => {
+      console.log(data.abilitato);
+      if (data.abilitato == 1) {
+        this.permissions = true;
+      } else {
+        this.permissions = false;
+      }
     })
 
   }

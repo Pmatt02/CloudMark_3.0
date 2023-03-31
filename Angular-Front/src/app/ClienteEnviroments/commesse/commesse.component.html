@@ -31,7 +31,7 @@
       </tr>
     </tbody>
   </table><br>
-  <button class="btn btn-dark m-2" routerLink="/commessaAdd/{{a.id_cliente}}">Aggiungi Commessa</button> 
+  <button class="btn btn-dark m-2" routerLink="/commessaAdd/{{a.id_cliente}}" *ngIf="permissions">Aggiungi Commessa</button> 
   <div>
 <div class="m-5" *ngFor="let c of commesse| async">
   <table class="table ">
@@ -59,8 +59,8 @@
     </tbody>
   </table><br>
   <div>
-    <button class="btn btn-dark m-2" routerLink="/commessaUpdate/{{c.id_commessa}}">Modifica</button>    
-    <button class="btn btn-dark m-2" (click)="deleteCommessa(c.id_commessa)">Elimina</button>    
+    <button class="btn btn-dark m-2" routerLink="/commessaUpdate/{{c.id_commessa}}" *ngIf="permissions">Modifica</button>    
+    <button class="btn btn-dark m-2" (click)="deleteCommessa(c.id_commessa)" *ngIf="permissions">Elimina</button>    
 </div>
  
 </div>

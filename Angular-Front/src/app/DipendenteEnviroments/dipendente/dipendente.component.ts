@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Dipendente } from 'src/app/modules/dipendente';
 import { DipendenteService } from 'src/app/services/dipendente.service';
 import {saveAs} from 'file-saver';
+import { AziendaService } from 'src/app/services/azienda.service';
 
 @Component({
   selector: 'app-dipendente',
@@ -15,14 +16,23 @@ export class DipendenteComponent implements OnInit{
   dipendente$!: Observable<Dipendente[]>;
   dipendenteId!: any;
   @Input() idaz: any;
+  permissions: boolean= false;
 
-  constructor(private router: ActivatedRoute, private servizioDipendente: DipendenteService) {};
+  constructor(private router: ActivatedRoute, private servizioDipendente: DipendenteService, private aziendaService: AziendaService) {};
 
   ngOnInit(): void {
     this.router.paramMap.subscribe((param: ParamMap) => {
       this.dipendenteId = this.router.snapshot.paramMap.get('id');
       this.dipendente$ = this.servizioDipendente.getEmployeesByIdAzienda(this.dipendenteId)
 //      window.history.replaceState("", "", '/Dipendenti');
+    })
+    this.aziendaService.getCredentials().subscribe((data) => {
+      console.log(data.abilitato);
+      if (data.abilitato == 1) {
+        this.permissions = true;
+      } else {
+        this.permissions = false;
+      }
     })
     console.log(this.dipendente$);
 

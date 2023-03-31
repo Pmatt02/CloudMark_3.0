@@ -5,6 +5,7 @@ import { Cliente } from 'src/app/modules/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
 import {saveAs} from 'file-saver';
 import * as Papa from 'papaparse';
+import { AziendaService } from 'src/app/services/azienda.service';
 
 @Component({
   selector: 'app-cliente',
@@ -19,8 +20,9 @@ export class ClienteComponent implements OnInit{
   numeroCommesse: any;
   id!:any;
   @Input() idaz: any;
+  permissions: boolean = false;
 
-  constructor(private router: ActivatedRoute, private servizioCliente: ClienteService){};
+  constructor(private router: ActivatedRoute, private servizioCliente: ClienteService, private aziendaService : AziendaService){};
 
   ngOnInit(): void {
     this.router.paramMap.subscribe((param: ParamMap) => {
@@ -28,10 +30,14 @@ export class ClienteComponent implements OnInit{
       this.cliente$ = this.servizioCliente.getCustomersByAzienda(this.clienteId)
       //window.history.replaceState("", "", '/Cliente');
     })
-    // console.log(this.cliente$);
-    
-
-      
+    this.aziendaService.getCredentials().subscribe((data) => {
+      console.log(data.abilitato);
+      if (data.abilitato == 1) {
+        this.permissions = true;
+      } else {
+        this.permissions = false;
+      }
+    })
       
     }
     

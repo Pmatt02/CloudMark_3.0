@@ -29,7 +29,7 @@
         <td>{{c.pec}}</td>
         <td>{{c.fax}}</td>
         <td *ngIf="numeroCommesse">{{numeroCommesse}}</td>
-        <button type="button" class="btn bg-dark text-white" routerLink="/updateCliente/{{c.id_cliente}}" >Modifica</button>
+        <button type="button" class="btn bg-dark text-white" routerLink="/updateCliente/{{c.id_cliente}}" *ngIf="permissions">Modifica</button>
         <button type="button" class="btn bg-dark text-white" routerLink="/clienteCommessa/{{c.id_cliente}}" >Dettagli</button>
       </tr>
       <button type="button" class="btn bg-dark text-white" (click)="downloadFile()" >CSV</button>
@@ -37,7 +37,7 @@
     </tbody>
   </table><br>
 
-  <button type="button" class="btn btn-dark" routerLink="/addCliente/{{idaz}}">Aggiungi</button>
+  <button type="button" class="btn btn-dark" routerLink="/addCliente/{{idaz}}" *ngIf="permissions">Aggiungi</button>
   
 </div>
 
