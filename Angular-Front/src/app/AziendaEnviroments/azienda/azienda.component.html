@@ -1,15 +1,19 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <div class="">
   <!-- Page Heading -->
-  <div  class="frontside" *ngIf="permissions">
-  <p>Ricerca: </p>
-  <input type="radio" name="search" (click)="showDipendente()">
-  <label for="html">Dipendenti</label>
-  <input type="radio" name="search" (click)="showClienti()">
-  <label for="css">Clienti</label>
+  <div class="frontside" *ngIf="permissions">
+    <p>Ricerca:</p>
+      <input type="radio" name="search" (click)="showDipendente()" />  
+    <label for="html">Dipendenti</label>  
+    <input type="radio" name="search" (click)="showClienti()" />  
+    <label for="css">Clienti</label>
   </div>
   <!-- SearchBar -->
   <nav class="navbar bg-light my-5 rounded-2" *ngIf="dipendentidisplay">
@@ -35,11 +39,20 @@
   </nav>
   <!-- Search Results -->
 
-  <div class="alert alert-warning alert-dismissible fade show" *ngIf="errore" role="alert">
+  <div
+    class="alert alert-warning alert-dismissible fade show"
+    *ngIf="errore"
+    role="alert"
+  >
     <strong>Attenzione!</strong> La ricerca non ha prodotto risultati.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="chiudi()"></button>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      (click)="chiudi()"
+    ></button>
   </div>
-  <div *ngIf="is_display" >
+  <div *ngIf="is_display">
     <h2 class="text-dark">Dipendenti</h2>
     <div>
       <table class="table">
@@ -50,7 +63,6 @@
             <th scope="col">Matricola</th>
             <th scope="col">Contratto</th>
             <th scope="col">Assunzione</th>
-
           </tr>
         </thead>
         <tbody>
@@ -61,12 +73,14 @@
           >
             <th>{{ d.cognome }}</th>
             <td>{{ d.nome }}</td>
-            <td>{{ d.matricola }}
-            <!-- <td *ngIf = "d.id_tipo_contratto as '198ef11d-cf73-4245-8469-2ddfa9979acf'; else elseBlock">Indeterminato</td>
+            <td>
+              {{ d.matricola }}
+              <!-- <td *ngIf = "d.id_tipo_contratto as '198ef11d-cf73-4245-8469-2ddfa9979acf'; else elseBlock">Indeterminato</td>
             <ng-template #elseBlock> Determinato</ng-template> -->
-            <td>{{d.nome_tipo_contratto}}</td>
-            <td>{{ d.data_inizio_rapporto }}</td>
+            </td>
 
+            <td>{{ d.nome_tipo_contratto }}</td>
+            <td>{{ d.data_inizio_rapporto }}</td>
           </tr>
         </tbody>
       </table>
@@ -99,11 +113,20 @@
 
   <!-- Search Results Clienti-->
 
-  <div class="alert alert-warning alert-dismissible fade show" *ngIf="errore2" role="alert">
+  <div
+    class="alert alert-warning alert-dismissible fade show"
+    *ngIf="errore2"
+    role="alert"
+  >
     <strong>Attenzione!</strong> La ricerca non ha prodotto risultati.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="chiudi()"></button>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      (click)="chiudi()"
+    ></button>
   </div>
-  <div *ngIf="is_display2" >
+  <div *ngIf="is_display2">
     <h2 class="text-dark">Clienti</h2>
     <div>
       <table class="table">
@@ -113,7 +136,6 @@
             <th scope="col">Partita iva</th>
             <th scope="col">Email</th>
             <th scope="col">Telefono</th>
-
           </tr>
         </thead>
         <tbody>
@@ -124,82 +146,83 @@
           >
             <th>{{ c.nome }}</th>
             <td>{{ c.p_iva }}</td>
-            <td>{{ c.email }}
-            <!-- <td *ngIf = "d.id_tipo_contratto as '198ef11d-cf73-4245-8469-2ddfa9979acf'; else elseBlock">Indeterminato</td>
+            <td>
+              {{ c.email }}
+              <!-- <td *ngIf = "d.id_tipo_contratto as '198ef11d-cf73-4245-8469-2ddfa9979acf'; else elseBlock">Indeterminato</td>
             <ng-template #elseBlock> Determinato</ng-template> -->
-            <td>{{ c.telefono }}</td>
+            </td>
 
+            <td>{{ c.telefono }}</td>
           </tr>
         </tbody>
       </table>
       <br />
     </div>
   </div>
-<!-- Team -->
+  <!-- Team -->
 
-<section id="team" class="pb-5">
-
+  <section id="team" class="pb-5">
     <div class="container">
+      <h5 class="section-title h1">LISTA AZIENDE</h5>
 
-        <h5 class="section-title h1">LISTA AZIENDE</h5>
-
-        <div class="row" >
-          
-          <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let e of aziende | async">
-
-              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-
-                  <div class="mainflip">
-
-                    <div class="frontside">
-
-                      <div class="card">
-
-                        <div class="card-body text-center">
-
-                          <h4 class="card-title text-capitalize">{{e.nome}}</h4>
-                          <p class="card-text text-capitalize">{{e.indirizzo}}</p>
-                          <p class="card-text">{{e.email}}</p>
-                          <p><img class=" img-fluid" src="https://images.unsplash.com/photo-1489447068241-b3490214e879?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a85cb0d68de38ae2aa00d8a9663a320a&auto=format&fit=crop&w=1350&q=80" alt="card image"></p>
-
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                    <div class="backside">
-
-                        <div class="card">
-
-                            <div class="card-body text-capitalize text-center mt-4">
-
-                              <h4 class="card-title">{{e.nome}}</h4>
-                              <p class="card-text">
-
-                                <button class="btn btn-primary" routerLink="aziendaDetails/{{ e.id_azienda }}">
-                                  Info
-                                </button>
-                              
-                              </p>
-
-                              <ul class="list-inline">
-
-                              </ul>
-
-                            </div>
-
-                        </div>
-                    </div>
-
+      <div class="row">
+        <div
+          class="col-xs-12 col-sm-6 col-md-4"
+          *ngFor="let e of aziende | async"
+        >
+          <div
+            class="image-flip"
+            ontouchstart="this.classList.toggle('hover');"
+          >
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <h4 class="card-title text-capitalize">{{ e.nome }}</h4>
+                    <p class="card-text text-capitalize">{{ e.indirizzo }}</p>
+                    <p class="card-text">{{ e.email }}</p>
+                    <p>
+                      <img
+                        class="img-fluid"
+                        src="https://images.unsplash.com/photo-1489447068241-b3490214e879?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a85cb0d68de38ae2aa00d8a9663a320a&auto=format&fit=crop&w=1350&q=80"
+                        alt="card image"
+                      />
+                    </p>
                   </div>
-
+                </div>
               </div>
 
-          </div>
-          <!-- ./Team member -->
+              <div class="backside">
+                <div class="card">
+                  <div class="card-body text-capitalize text-center mt-4">
+                    <h4 class="card-title">{{ e.nome }}</h4>
+                    <p class="card-text">
+                      <button
+                        class="btn btn-primary"
+                        routerLink="aziendaDetails/{{ e.id_azienda }}"
+                      >
+                        Info
+                      </button>
+                    </p>
 
+                    <ul class="list-inline"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- ./Team member -->
+      </div>
     </div>
-    <button class="btn btn-primary" routerLink="addAzienda" *ngIf="permissions">Aggiungi Azienda</button>
-</section>
+    <div class="d-flex align-items-center justify-content-center mt-5">
+      <button
+        class="btn btn-primary w-25"
+        routerLink="addAzienda"
+        *ngIf="permissions"
+      >
+        Aggiungi Azienda
+      </button>
+    </div>
+  </section>
+</div>
