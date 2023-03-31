@@ -32,6 +32,8 @@ export class AziendaComponent implements OnInit{
   cliente$!: Observable<Cliente[]>;
   array: any[]=[''];
   lunghezza!: number;
+  dipendentidisplay: boolean = false;
+  clientidisplay: boolean = false;
 
   searchDipendente(dipendente: HTMLInputElement) {
     if (dipendente.value) {
@@ -91,5 +93,14 @@ export class AziendaComponent implements OnInit{
     this.errore=false;
     this.errore2=false;
   }
+  
+  showDipendente(){
+    this.dipendentidisplay=true;
+    this.clientidisplay=false;
+  }
 
+  showClienti(){
+    this.dipendentidisplay=false;
+    this.clientidisplay=true;
+  }
 }
