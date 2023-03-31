@@ -8,15 +8,33 @@
 <!------ Include the above in your HEAD tag ---------->
 <div class="">
   <!-- Page Heading -->
-  <div class="frontside" *ngIf="permissions">
-    <p>Ricerca:</p>
-      <input type="radio" name="search" (click)="showDipendente()" />  
-    <label for="html">Dipendenti</label>  
-    <input type="radio" name="search" (click)="showClienti()" />  
-    <label for="css">Clienti</label>
+  <div class="search-wrapper my-5 container d-flex justify-content-start">
+    <div class="search" *ngIf="permissions">
+      <p class="green-text">Ricerca:</p>
+      <div class="search-option">
+        <input
+          class="bigger-dot"
+          type="radio"
+          name="search"
+          (click)="showDipendente()"
+        />
+          <label for="html">Dipendenti</label>  
+        <input
+          class="bigger-dot"
+          type="radio"
+          name="search"
+          (click)="showClienti()"
+        />
+         
+        <label for="css">Clienti</label>
+      </div>
+    </div>
   </div>
   <!-- SearchBar -->
-  <nav class="navbar bg-light my-5 rounded-2" *ngIf="dipendentidisplay">
+  <nav
+    class="navbar container bg-light my-5 rounded-2"
+    *ngIf="dipendentidisplay"
+  >
     <div class="container-fluid">
       <a class="navbar-brand">Cerca Dipendente</a>
       <form class="d-flex" role="search">
@@ -215,9 +233,11 @@
         <!-- ./Team member -->
       </div>
     </div>
-    <div class="d-flex align-items-center justify-content-center mt-5">
+    <div
+      class="container d-flex align-items-center justify-content-center mt-5"
+    >
       <button
-        class="btn btn-primary w-25"
+        class="btn btn-primary w-50 p-2"
         routerLink="addAzienda"
         *ngIf="permissions"
       >
