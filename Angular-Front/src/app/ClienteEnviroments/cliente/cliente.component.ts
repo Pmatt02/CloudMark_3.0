@@ -32,7 +32,7 @@ export class ClienteComponent implements OnInit{
     })
     this.aziendaService.getCredentials().subscribe((data) => {
       console.log(data.abilitato);
-      if (data.abilitato == 1) {
+      if (data.nome_tipo_account == 'administrator') {
         this.permissions = true;
       } else {
         this.permissions = false;

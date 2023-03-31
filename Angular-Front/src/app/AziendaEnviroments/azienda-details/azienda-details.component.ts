@@ -27,7 +27,7 @@ export class AziendaDetailsComponent implements OnInit{
     window.history.replaceState("", "", '/DettaglioAzienda');
     this.aziendaService.getCredentials().subscribe((data) => {
       console.log(data.abilitato);
-      if (data.abilitato == 1) {
+      if (data.nome_tipo_account == 'administrator') {
         this.permissions = true;
       } else {
         this.permissions = false;

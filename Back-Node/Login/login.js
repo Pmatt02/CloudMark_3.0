@@ -87,8 +87,9 @@ router.post("/login", (req, res) => {
 router.get('/credentials', (req, res) => {
     
     connectionDb.query(
-        `select email, password, abilitato from account a \
+        `select email, password, abilitato, nome_tipo_account from account a \
         inner join account_dipendente ad on ad.id_account = a.id_account \
+        inner join tipo_account ta on a.id_tipo_account = ta.id_tipo_account \
         inner join dipendente d on d.id_dipendente=ad.id_dipendente where email = '${emaill}' and password = '${passwordd}'`,
         (err, result) => {
             if (err) {
