@@ -1,56 +1,121 @@
-<p>update-dipendente works!</p>
-<div>{{dipendente_Id}}</div>
-
-
-    <div class="container" >
-        
-        <form  *ngFor="let d of dipendente$ | async" (ngSubmit)="modificaDipendente(form.value)" class="form" #form="ngForm">
-          <fieldset >
-            <legend>Anagrafica</legend>
-            <div class="form-group">
-              <label for="id_dipendente">*Id Dipendente</label>
-              <input type="text" value="{{d.id_dipendente}}" id="id_dipendente" class="form-control" [ngModel]="d.id_dipendente" name="id_dipendente" readonly>
-            </div>
-            <div class="form-group">
-              <label for="nome">Nome</label>
-              <input type="text" value="{{d.nome}}" id="nome" name="nome" class="form-control" [ngModel]="d.nome">
-            </div>
-            <div class="form-group">
-              <label for="cognome">Partita Iva</label>
-              <input type="text" value="{{d.cognome}}" id="cognome" name="cognome" class="form-control" [ngModel]="d.cognome">
-            </div>
-          </fieldset>
-          <fieldset >
-            <legend >Contatti</legend>
-            <div class="form-group">
-              <label for="cf">cf</label>
-              <input type="text" value="{{d.cf}}" id="cf" name="cf" class="form-control" [ngModel]="d.cf" cf required>
-            </div>
-            <div class="form-group">
-              <label for="iban">iban</label>
-              <input type="text" value="{{d.iban}}" id="iban"  name="iban" class="form-control" [ngModel]="d.iban">
-            </div>
-            <div class="form-group">
-              <label for="id_tipo_contratto">id_tipo_contratto</label>
-              <input type="text" value="{{d.id_tipo_contratto}}" id="id_tipo_contratto" name="id_tipo_contratto" class="form-control" [ngModel]="d.id_tipo_contratto">
-            </div>
-            <div class="form-group">
-              <label for="email">email</label>
-              <input type="text" value="{{d.email}}" id="email" name="email" class="form-control" [ngModel]="d.email">
-            </div>
-            <div class="form-group">
-              <label for="telefono">telefono</label>
-              <input type="text" value="{{d.telefono}}" id="telefono" name="telefono" class="form-control" [ngModel]="d.telefono">
-            </div>
-            <div class="form-group">
-              <label for="data_nascita">data_nascita</label>
-              <input type="date" value="{{d.data_nascita}}" id="data_nascita" name="data_nascita" class="form-control" [ngModel]="d.data_nascita">
-            </div>
-          </fieldset>
-          <div class="actions">
-            <button type="submit" class="btn btn-dark">Submit</button>
-              <p [hidden]="form.valid">Compila tutti i campi contrassegnati con un *</p>
-          </div>
-        </form>
+<div class="container">
+  <form
+    *ngFor="let d of dipendente$ | async"
+    (ngSubmit)="modificaDipendente(form.value)"
+    class="form"
+    #form="ngForm"
+  >
+    <fieldset>
+      <legend>Anagrafica</legend>
+      <div class="form-group">
+        <label for="id_dipendente">*Id Dipendente</label>
+        <input
+          type="text"
+          value="{{ d.id_dipendente }}"
+          id="id_dipendente"
+          class="form-control"
+          [ngModel]="d.id_dipendente"
+          name="id_dipendente"
+          readonly
+        />
       </div>
-  
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input
+          type="text"
+          value="{{ d.nome }}"
+          id="nome"
+          name="nome"
+          class="form-control"
+          [ngModel]="d.nome"
+        />
+      </div>
+      <div class="form-group">
+        <label for="cognome">Partita Iva</label>
+        <input
+          type="text"
+          value="{{ d.cognome }}"
+          id="cognome"
+          name="cognome"
+          class="form-control"
+          [ngModel]="d.cognome"
+        />
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Contatti</legend>
+      <div class="form-group">
+        <label for="cf">cf</label>
+        <input
+          type="text"
+          value="{{ d.cf }}"
+          id="cf"
+          name="cf"
+          class="form-control"
+          [ngModel]="d.cf"
+          cf
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="iban">iban</label>
+        <input
+          type="text"
+          value="{{ d.iban }}"
+          id="iban"
+          name="iban"
+          class="form-control"
+          [ngModel]="d.iban"
+        />
+      </div>
+      <div class="form-group">
+        <label for="id_tipo_contratto">id_tipo_contratto</label>
+        <input
+          type="text"
+          value="{{ d.id_tipo_contratto }}"
+          id="id_tipo_contratto"
+          name="id_tipo_contratto"
+          class="form-control"
+          [ngModel]="d.id_tipo_contratto"
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">email</label>
+        <input
+          type="text"
+          value="{{ d.email }}"
+          id="email"
+          name="email"
+          class="form-control"
+          [ngModel]="d.email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="telefono">telefono</label>
+        <input
+          type="text"
+          value="{{ d.telefono }}"
+          id="telefono"
+          name="telefono"
+          class="form-control"
+          [ngModel]="d.telefono"
+        />
+      </div>
+      <div class="form-group">
+        <label for="data_nascita">data_nascita</label>
+        <input
+          type="date"
+          value="{{ d.data_nascita }}"
+          id="data_nascita"
+          name="data_nascita"
+          class="form-control"
+          [ngModel]="d.data_nascita"
+        />
+      </div>
+    </fieldset>
+    <div class="actions">
+      <button type="submit" class="btn btn-dark">Submit</button>
+      <p [hidden]="form.valid">Compila tutti i campi contrassegnati con un *</p>
+    </div>
+  </form>
+</div>

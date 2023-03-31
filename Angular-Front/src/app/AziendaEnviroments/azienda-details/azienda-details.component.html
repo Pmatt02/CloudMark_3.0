@@ -1,10 +1,8 @@
-
-<h2 class="text-dark"> Dettaglio Azienda</h2>
+<h2 class="text-dark m-5">Dettaglio Azienda</h2>
 <div class="m-5" *ngIf="azienda$ | async as a">
-  <table class="table ">
+  <table class="table">
     <thead class="bg-dark text-white">
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Nome azienda</th>
         <th scope="col">Indirizzo azienda</th>
         <th scope="col">CAP</th>
@@ -17,24 +15,38 @@
       </tr>
     </thead>
     <tbody>
-      <tr >
-        <th >{{a.id_azienda}}</th>
-        <td>{{a.nome}}</td>
-        <td>{{a.indirizzo}}</td>
-        <td>{{a.cap}}</td>
-        <td>{{a.p_iva}}</td>
-        <td>{{a.email}}</td>
-        <td>{{a.iban}}</td>
-        <td>{{a.telefono}}</td>
-        <td>{{a.pec}}</td>
-        <td>{{a.fax}}</td><br>
+      <tr>
+        <td>{{ a.nome }}</td>
+        <td>{{ a.indirizzo }}</td>
+        <td>{{ a.cap }}</td>
+        <td>{{ a.p_iva }}</td>
+        <td>{{ a.email }}</td>
+        <td>{{ a.iban }}</td>
+        <td>{{ a.telefono }}</td>
+        <td>{{ a.pec }}</td>
+        <td>{{ a.fax }}</td>
+        <br />
       </tr>
     </tbody>
-  </table><br>
+  </table>
+  <br />
   <div>
     <button class="btn btn-dark m-2" routerLink="/">Home</button>
-    <button class="btn btn-dark m-2" routerLink="/aziendaUpdate/{{a.id_azienda}}" *ngIf="permissions">Modifica</button>
-    <button class="btn btn-dark m-2" (click)="deleteAzienda(a.id_azienda)" routerLink="/" *ngIf="permissions">Elimina</button>
+    <button
+      class="btn btn-dark m-2"
+      routerLink="/aziendaUpdate/{{ a.id_azienda }}"
+      *ngIf="permissions"
+    >
+      Modifica
+    </button>
+    <button
+      class="btn btn-dark m-2"
+      (click)="deleteAzienda(a.id_azienda)"
+      routerLink="/"
+      *ngIf="permissions"
+    >
+      Elimina
+    </button>
   </div>
 </div>
 
@@ -46,6 +58,6 @@
 
 <div class="m-5 row">
   <div class="col-6">
-    <app-cliente [idaz]="aziendaId" ></app-cliente>
+    <app-cliente [idaz]="aziendaId"></app-cliente>
   </div>
 </div>
