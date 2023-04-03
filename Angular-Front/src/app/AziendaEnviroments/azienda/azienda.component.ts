@@ -22,6 +22,14 @@ export class AziendaComponent implements OnInit{
       } else {
         this.permissions = false;
       }
+      if (data.abilitato == 1){
+        console.log('tutto ok');
+        
+      } else {
+        alert('Non sei abilitato')
+        location.replace('http://localhost:3000/login');
+      
+      }
     })
   }
 
