@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'addDipendente/:id', component: AddDipendenteComponent},
   {path: 'addCliente/:id', component: AddClienteComponent},
   {path: 'updateCliente/:id', component: UpdateClienteComponent},
-  {path:'detailsCliente/:id', component: ClientiDetailsComponent},
+  {path: 'detailsCliente/:id', component: ClientiDetailsComponent},
   {path: 'azienda', component: AziendaComponent},
   {path: 'clienteCommessa/:id', component: CommesseComponent},
   {path: 'admin', component: AdminpanelComponent},

@@ -17,7 +17,24 @@ export class AddAziendaComponent implements OnInit{
   }
   ngOnInit(): void {
     window.history.replaceState("", "", '/AggiungiAzienda');
-  }
+    this.aziendaService.getCredentials().subscribe((data) => {
+      console.log(data.abilitato);
+      if (data.nome_tipo_account == 'administrator') {
+        console.log('tutto ok');
+      } else {
+        alert('Non sei abilitato')
+        location.replace('http://localhost:3000/login');
+      }
+      if (data.abilitato == 1){
+        console.log('tutto ok');
+        
+      } else {
+        alert('Non sei abilitato')
+        location.replace('http://localhost:3000/login');
+      
+    }
+  })
+}
 
 
 
