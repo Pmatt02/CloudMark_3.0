@@ -1,15 +1,41 @@
-<p>adminpanel works!</p>
-<div *ngFor="let a of accounts$ | async">
-    <div>{{a.user}}</div>
-    <div>{{a.nome}}</div>
-    <div>{{a.cognome}}</div>
-    <div>{{a.cf}}</div>
-    <div>{{a.email}}</div>
-    <div>{{a.password}}</div>
-    <div>{{a.abilitato}}</div>
-    <div>{{a.nome_tipo_account}}</div>
-    <select id="abilitato" name="abilitato" ngModel #abilitato="ngModel" (change)="modify(abilitato.value, a.id_account)">
-        <option value="0">Disabilitato</option>
-        <option value="1">Abilitato</option>
-      </select>
+<div id = "bg">
+
+  <div class = "contenitore">
+
+    <h1>IMPOSTAZIONI ACCOUNT DIPENDENTI</h1>
+  
+    <div class = "box" *ngFor="let a of accounts$ | async">
+  
+      <div class = "txt">
+
+        <p style="text-transform: none;"><span>Username:</span> {{a.user}}</p>
+
+        <p><span>Nome:</span> {{a.nome}}</p>
+
+        <p><span>Cognome:</span> {{a.cognome}}</p>
+
+        <p><span>Codice Fiscale:</span> {{a.cf}}</p>
+
+        <p style="text-transform: none;"><span>Email:</span> {{a.email}}</p>
+
+        <p><span>Stato:</span> 
+          {{ a.abilitato == '1' ? 'abilitato' : 'disabilitato' }}
+        </p>
+
+        <p><span>Tipo account:</span> {{a.nome_tipo_account}}</p>
+
+    
+        <select class = "stato" id="abilitato" name="abilitato" ngModel #abilitato="ngModel" (change)="modify(abilitato.value, a.id_account)">
+      
+          <option value="1">Abilita</option>
+          <option value="0">Disabilita</option>
+      
+        </select>
+
+      </div>
+    
+    </div>
+  
+  </div>
+
 </div>
