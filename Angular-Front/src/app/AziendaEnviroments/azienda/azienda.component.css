@@ -146,3 +146,36 @@ section .section-title {
   width: 17.5px;
   height: 17.5px;
 }
+
+.all{
+  border: 2px solid blue;
+  padding: 10px;
+  margin: 5px;
+}
+
+.header{
+  border: 2px solid red;
+  height: 200px;
+  position: relative;
+}
+
+.page{
+  border: 2px solid green;
+}
+
+.footer{
+  border: 2px solid pink;
+}
+
+#sett-btn{
+
+  position: absolute;
+  top: 0;
+  right: 20%;
+  margin: 10px;
+}
+
+.box-ricerca{
+  border: 1px solid green;
+  margin: 10px;
+}

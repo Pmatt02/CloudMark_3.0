@@ -5,6 +5,7 @@ import { Cliente } from 'src/app/modules/cliente';
 import { DipendenteResult } from 'src/app/modules/dipendente-result';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { AziendaService } from '../../services/azienda.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-azienda',

@@ -1,259 +1,331 @@
-<link
-  href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-  rel="stylesheet"
-  id="bootstrap-css"
-/>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('.modal').modal('show');
+  });
+  </script>
+
 <!------ Include the above in your HEAD tag ---------->
-<div class="">
+
+<div class="all">
+
   <!-- Page Heading -->
-  <div class="search-wrapper my-5 container d-flex justify-content-start">
-    <div class="search" *ngIf="permissions">
-      <p class="green-text">Ricerca:</p>
-      <div class="search-option">
-        <input
-          class="bigger-dot"
-          type="radio"
-          name="search"
-          (click)="showDipendente()"
-        />
-          <label for="html">Dipendenti</label>  
-        <input
-          class="bigger-dot"
-          type="radio"
-          name="search"
-          (click)="showClienti()"
-        />
-         
-        <label for="css">Clienti</label>
+
+  <div class = "header">
+
+    <button id = "sett-btn" class = "btn btn-outline-secondary" routerLink="/admin" *ngIf="permissions"><i class="bi bi-gear-fill"></i></button>
+
+    <!-- input barre ricerca -->
+    <!-- search-wrapper my-5 container d-flex justify-content-start -->
+
+    <div class="box-ricerca">
+
+      <div class="search" *ngIf="permissions">
+
+        <p class="green-text">Ricerca:</p>
+
+        <div class="search-option">
+
+          <input class="bigger-dot" type="button" name="search" (click)="showDipendente()" data-toggle="modal" data-target="#ModalDipendenti">
+          <label> Dipendenti</label>
+          <br>
+          <input class="bigger-dot" type="button" name="search" (click)="showClienti()">
+          <label> Clienti</label>
+
+        </div>
+
       </div>
+
     </div>
-  </div>
-  <!-- SearchBar -->
-  <nav
-    class="navbar container bg-light my-5 rounded-2"
-    *ngIf="dipendentidisplay"
-  >
-    <div class="container-fluid">
-      <a class="navbar-brand">Cerca Dipendente</a>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Inizia a digitare..."
-          aria-label="Cerca dipendente per nome"
-          #valoreDipendente
-          (input)="searchDipendente(valoreDipendente)"
-        />
-        <button
-          class="btn btn-outline-dark"
-          (click)="searchDipendente(valoreDipendente)"
-        >
-          Cerca!
-        </button>
-      </form>
+
+    <!-- SearchBar Dipendente-->
+
+    <div class = "modal" id = "ModalDipendenti">
+
+      <div class="modal-dialog" role="document">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+
+            <h5 class="modal-title" id="exampleModalLabel">Dipendenti</h5>
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            </button>
+
+          </div>
+
+          <div class="modal-body">
+
+            <nav class="navbar container bg-light my-5 rounded-2" *ngIf="dipendentidisplay">
+
+              <div class="modal-content">
+      
+                <a class="navbar-brand">Cerca Dipendente</a>
+      
+                <form class="d-flex" role="search">
+      
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Inizia a digitare..."
+                    aria-label="Cerca dipendente per nome"
+                    #valoreDipendente
+                    (input)="searchDipendente(valoreDipendente)"
+                  />
+      
+                  <button class="btn btn-outline-dark" (click)="searchDipendente(valoreDipendente)">
+                    Cerca!
+                  </button>
+      
+                </form>
+      
+              </div>
+      
+            </nav>
+      
+            <!-- Search Results Dipendente -->
+      
+            <div class="container p-3 mb-5 alert alert-warning alert-dismissible fade show" *ngIf="errore" role="alert">
+      
+              <strong>Attenzione!</strong> La ricerca non ha prodotto risultati.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="chiudi()">
+              </button>
+      
+            </div>
+      
+            <div *ngIf="is_display">
+      
+              <h2 class="text-dark">Dipendenti</h2>
+      
+              <div>
+      
+                <table class="table">
+      
+                  <thead class="bg-dark text-white">
+      
+                    <tr>
+                      <th scope="col">Cognome dipendente</th>
+                      <th scope="col">Nome dipendente</th>
+                      <th scope="col">Matricola</th>
+                      <th scope="col">Contratto</th>
+                      <th scope="col">Assunzione</th>
+                    </tr>
+      
+                  </thead>
+      
+                  <tbody>
+      
+                    <tr style="cursor: pointer" *ngFor="let d of dipendente$ | async" routerLink="aziendaDetails/{{ d.id_azienda }}">
+      
+                      <th>{{ d.cognome }}</th>
+                      <td>{{ d.nome }}</td>
+                      <td>{{ d.matricola }}</td>
+                      <td>{{ d.nome_tipo_contratto }}</td>
+                      <td>{{ d.data_inizio_rapporto }}</td>
+      
+                    </tr>
+      
+                  </tbody>
+      
+                </table>
+      
+                <br/>
+      
+              </div>
+      
+            </div>
+
+          </div>
+          
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+
+        </div>
+
+      </div>
+  
     </div>
-  </nav>
-  <!-- Search Results -->
 
-  <div
-    class="container p-3 mb-5 alert alert-warning alert-dismissible fade show"
-    *ngIf="errore"
-    role="alert"
-  >
-    <strong>Attenzione!</strong> La ricerca non ha prodotto risultati.
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="alert"
-      (click)="chiudi()"
-    ></button>
-  </div>
-  <div *ngIf="is_display">
-    <h2 class="text-dark">Dipendenti</h2>
-    <div>
-      <table class="table">
-        <thead class="bg-dark text-white">
-          <tr>
-            <th scope="col">Cognome dipendente</th>
-            <th scope="col">Nome dipendente</th>
-            <th scope="col">Matricola</th>
-            <th scope="col">Contratto</th>
-            <th scope="col">Assunzione</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            style="cursor: pointer"
-            *ngFor="let d of dipendente$ | async"
-            routerLink="aziendaDetails/{{ d.id_azienda }}"
-          >
-            <th>{{ d.cognome }}</th>
-            <td>{{ d.nome }}</td>
-            <td>
-              {{ d.matricola }}
-              <!-- <td *ngIf = "d.id_tipo_contratto as '198ef11d-cf73-4245-8469-2ddfa9979acf'; else elseBlock">Indeterminato</td>
-            <ng-template #elseBlock> Determinato</ng-template> -->
-            </td>
+    <!-- SearchBar Clienti -->
 
-            <td>{{ d.nome_tipo_contratto }}</td>
-            <td>{{ d.data_inizio_rapporto }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <br />
+    <nav class="navbar bg-light my-5 rounded-2" *ngIf="clientidisplay">
+
+      <div class="container-fluid">
+
+        <a class="navbar-brand">Cerca Cliente</a>
+
+        <form class="d-flex" role="search">
+
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Inizia a digitare..."
+            aria-label="Cerca cliente"
+            #valoreCliente
+            (input)="searchCliente(valoreCliente)"
+          />
+
+          <button class="btn btn-outline-dark" (click)="searchCliente(valoreCliente)">
+            Cerca!
+          </button>
+
+        </form>
+
+      </div>
+
+    </nav>
+
+    <!-- Search Results Clienti-->
+
+    <div class="alert alert-warning alert-dismissible fade show" *ngIf="errore2" role="alert">
+
+      <strong>Attenzione!</strong> La ricerca non ha prodotto risultati.
+
+      <button type="button" class="btn-close" data-bs-dismiss="alert" (click)="chiudi()">
+      </button>
+
     </div>
-  </div>
 
-  <!-- SearchBar Clienti -->
-  <nav class="navbar bg-light my-5 rounded-2" *ngIf="clientidisplay">
-    <div class="container-fluid">
-      <a class="navbar-brand">Cerca Cliente</a>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Inizia a digitare..."
-          aria-label="Cerca cliente"
-          #valoreCliente
-          (input)="searchCliente(valoreCliente)"
-        />
-        <button
-          class="btn btn-outline-dark"
-          (click)="searchCliente(valoreCliente)"
-        >
-          Cerca!
-        </button>
-      </form>
+    <div *ngIf="is_display2">
+
+      <h2 class="text-dark">Clienti</h2>
+
+      <div>
+
+        <table class="table">
+
+          <thead class="bg-dark text-white">
+
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Partita iva</th>
+              <th scope="col">Email</th>
+              <th scope="col">Telefono</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+            
+            <tr style="cursor: pointer" *ngFor="let c of cliente$ | async" routerLink="clienteCommessa/{{ c.id_cliente }}">
+              <th>{{ c.nome }}</th>
+              <td>{{ c.p_iva }}</td>
+              <td>{{ c.email }}</td>
+              <td>{{ c.telefono }}</td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <br/>
+
+      </div>
+
     </div>
-  </nav>
 
-  <!-- Search Results Clienti-->
-
-  <div
-    class="alert alert-warning alert-dismissible fade show"
-    *ngIf="errore2"
-    role="alert"
-  >
-    <strong>Attenzione!</strong> La ricerca non ha prodotto risultati.
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="alert"
-      (click)="chiudi()"
-    ></button>
   </div>
-  <div *ngIf="is_display2">
-    <h2 class="text-dark">Clienti</h2>
-    <div>
-      <table class="table">
-        <thead class="bg-dark text-white">
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Partita iva</th>
-            <th scope="col">Email</th>
-            <th scope="col">Telefono</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            style="cursor: pointer"
-            *ngFor="let c of cliente$ | async"
-            routerLink="clienteCommessa/{{ c.id_cliente }}"
-          >
-            <th>{{ c.nome }}</th>
-            <td>{{ c.p_iva }}</td>
-            <td>
-              {{ c.email }}
-              <!-- <td *ngIf = "d.id_tipo_contratto as '198ef11d-cf73-4245-8469-2ddfa9979acf'; else elseBlock">Indeterminato</td>
-            <ng-template #elseBlock> Determinato</ng-template> -->
-            </td>
 
-            <td>{{ c.telefono }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <br />
-    </div>
-  </div>
   <!-- Team -->
 
-  <section id="team" class="pb-5">
-    <div class="container">
-      <h5 class="section-title h1">LISTA AZIENDE</h5>
+  <div class = "page">
 
-      <div class="row">
-        <div
-          class="col-xs-12 col-sm-6 col-md-4"
-          *ngFor="let e of aziende | async"
-        >
-          <div
-            class="image-flip"
-            ontouchstart="this.classList.toggle('hover');"
-          >
-            <div class="mainflip">
-              <div class="frontside">
-                <div class="card">
-                  <div class="card-body text-center">
-                    <h4 class="card-title text-capitalize">{{ e.nome }}</h4>
-                    <p class="card-text text-capitalize">{{ e.indirizzo }}</p>
-                    <p class="card-text">{{ e.email }}</p>
-                    <p>
-                      <img
-                        class="img-fluid"
-                        src="https://images.unsplash.com/photo-1489447068241-b3490214e879?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a85cb0d68de38ae2aa00d8a9663a320a&auto=format&fit=crop&w=1350&q=80"
-                        alt="card image"
-                      />
-                    </p>
+    <section id="team" class="pb-5">
+
+      <div class="container">
+
+        <h5 class="section-title h1">LISTA AZIENDE</h5>
+
+        <div class="row">
+
+          <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let e of aziende | async">
+
+            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+
+              <div class="mainflip">
+
+                <div class="frontside">
+
+                  <div class="card">
+
+                    <div class="card-body text-center">
+
+                      <h4 class="card-title text-capitalize">{{ e.nome }}</h4>
+                      <p class="card-text text-capitalize">{{ e.indirizzo }}</p>
+                      <p class="card-text">{{ e.email }}</p>
+                      <p>
+                        <img
+                          class="img-fluid"
+                          src="https://images.unsplash.com/photo-1489447068241-b3490214e879?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a85cb0d68de38ae2aa00d8a9663a320a&auto=format&fit=crop&w=1350&q=80"
+                          alt="card image"
+                        />
+
+                      </p>
+
+                    </div>
+
                   </div>
+
                 </div>
+
+                <div class="backside">
+
+                  <div class="card">
+
+                    <div class="card-body text-capitalize text-center mt-4">
+
+                      <h4 class="card-title">{{ e.nome }}</h4>
+                      
+                      <p class="card-text">
+
+                        <button class="btn btn-primary" routerLink="aziendaDetails/{{ e.id_azienda }}">
+                          Info
+                        </button>
+
+                      </p>
+
+                      <ul class="list-inline"></ul>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
               </div>
 
-              <div class="backside">
-                <div class="card">
-                  <div class="card-body text-capitalize text-center mt-4">
-                    <h4 class="card-title">{{ e.nome }}</h4>
-                    <p class="card-text">
-                      <button
-                        class="btn btn-primary"
-                        routerLink="aziendaDetails/{{ e.id_azienda }}"
-                      >
-                        Info
-                      </button>
-                    </p>
-
-                    <ul class="list-inline"></ul>
-                  </div>
-                </div>
-              </div>
             </div>
+
           </div>
+
         </div>
-        <!-- ./Team member -->
+
       </div>
-    </div>
-    <div
-      class="container d-flex align-items-center justify-content-center mt-5"
-    >
-      <button
-        class="btn btn-primary w-50 p-2"
-        routerLink="addAzienda"
-        *ngIf="permissions"
-      >
+
+    </section>
+
+  </div>
+
+  <div class = "footer">
+
+    <div class="container d-flex align-items-center justify-content-center mt-5">
+
+      <button class="btn btn-primary w-50 p-2" routerLink="addAzienda" *ngIf="permissions">
+
         Aggiungi Azienda
+
       </button>
+
     </div>
-    <div
-      class="container d-flex align-items-center justify-content-center mt-5"
-    >
-      <button
-        class="btn btn-primary w-50 p-2"
-        routerLink="/admin"
-        *ngIf="permissions"
-      >
-        admin-panel-test-button
-      </button>
-    </div>
-  </section>
+
+  </div>
+
 </div>
