@@ -29,7 +29,7 @@
 
         <div class="search-option">
 
-          <input class="bigger-dot" type="button" name="search" (click)="showDipendente()" data-toggle="modal" data-target="#ModalDipendenti">
+          <input class="bigger-dot" type="button" name="search" (click)="openModal(ModalDipendenti)">
           <label> Dipendenti</label>
           <br>
           <input class="bigger-dot" type="button" name="search" (click)="showClienti()">
@@ -43,11 +43,11 @@
 
     <!-- SearchBar Dipendente-->
 
-    <div class = "modal" id = "ModalDipendenti">
+    <ng-template #ModalDipendenti>
 
-      <div class="modal-dialog" role="document">
+      <!-- <div class="modal-dialog"> -->
 
-        <div class="modal-content">
+        <!-- <div class="modal-content"> -->
 
           <div class="modal-header">
 
@@ -61,29 +61,25 @@
           <div class="modal-body">
 
             <nav class="navbar container bg-light my-5 rounded-2" *ngIf="dipendentidisplay">
-
-              <div class="modal-content">
       
-                <a class="navbar-brand">Cerca Dipendente</a>
-      
-                <form class="d-flex" role="search">
-      
-                  <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Inizia a digitare..."
-                    aria-label="Cerca dipendente per nome"
-                    #valoreDipendente
-                    (input)="searchDipendente(valoreDipendente)"
-                  />
-      
-                  <button class="btn btn-outline-dark" (click)="searchDipendente(valoreDipendente)">
-                    Cerca!
-                  </button>
-      
-                </form>
-      
-              </div>
+              <a class="navbar-brand">Cerca Dipendente</a>
+    
+              <form class="d-flex" role="search">
+    
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Inizia a digitare..."
+                  aria-label="Cerca dipendente per nome"
+                  #valoreDipendente
+                  (input)="searchDipendente(valoreDipendente)"
+                />
+    
+                <button class="btn btn-outline-dark" (click)="searchDipendente(valoreDipendente)">
+                  Cerca!
+                </button>
+    
+              </form>
       
             </nav>
       
@@ -143,15 +139,15 @@
           
           <div class="modal-footer">
 
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal-close">Close</button>
 
           </div>
 
-        </div>
+        <!-- </div> -->
 
-      </div>
+      <!-- </div> -->
   
-    </div>
+    </ng-template>
 
     <!-- SearchBar Clienti -->
 
