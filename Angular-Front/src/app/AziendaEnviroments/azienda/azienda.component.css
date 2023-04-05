@@ -183,5 +183,5 @@ section .section-title {
 ::ng-deep ngb-modal-backdrop {
 
   z-index: 1050 !important;
-  
+
 }

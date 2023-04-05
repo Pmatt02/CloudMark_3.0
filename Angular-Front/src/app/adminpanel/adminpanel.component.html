@@ -3,9 +3,9 @@
   <div class = "contenitore">
 
     <h1>IMPOSTAZIONI ACCOUNT DIPENDENTI</h1>
-  
+
     <div class = "box" *ngFor="let a of accounts$ | async">
-  
+
       <div class = "txt">
 
         <p style="text-transform: none;"><span>Username:</span> {{a.user}}</p>
@@ -18,24 +18,28 @@
 
         <p style="text-transform: none;"><span>Email:</span> {{a.email}}</p>
 
-        <p><span>Stato:</span> 
+        <p><span>Stato:</span>
           {{ a.abilitato == '1' ? 'abilitato' : 'disabilitato' }}
         </p>
 
         <p><span>Tipo account:</span> {{a.nome_tipo_account}}</p>
 
-    
+
         <select class = "stato" id="abilitato" name="abilitato" ngModel #abilitato="ngModel" (change)="modify(abilitato.value, a.id_account)">
-      
+
           <option value="1">Abilita</option>
           <option value="0">Disabilita</option>
-      
+
         </select>
 
       </div>
-    
+
     </div>
-  
+
+    <div class="home">
+      <button class="btn btn-success mb-5" routerLink="/">Home</button>
+    </div>
+
   </div>
 
 </div>

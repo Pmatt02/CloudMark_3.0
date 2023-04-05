@@ -11,7 +11,6 @@
     margin: 20px auto;
     background: white;
     border-radius: 20px;
-
 }
 
 h1{
@@ -32,14 +31,14 @@ p{
 }
 
 .txt{
-    
+
     margin: 0 auto;
     border: 3px solid #108d6f;
     width: 400px;
     border-radius: 20px;
     text-align: center;
     padding: 10px;
-    
+
 }
 
 hr{
@@ -50,4 +49,12 @@ hr{
 span{
     font-weight: bold;
 }
+
+.home{
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+
 
