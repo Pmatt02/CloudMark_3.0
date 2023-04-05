@@ -180,10 +180,8 @@ section .section-title {
   margin: 10px;
 }
 
-/* #ModalDipendenti .modal-backdrop{
-  z-index: 1;
-} */
+::ng-deep ngb-modal-backdrop {
 
-.modal-header .modal-body .modal-footer{
-  z-index: 1056 !important;
+  z-index: 1050 !important;
+  
 }

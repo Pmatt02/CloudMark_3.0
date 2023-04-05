@@ -133,12 +133,18 @@ export class AziendaComponent implements OnInit{
     const ModalOptions: NgbModalOptions = {
       backdrop: true,
       keyboard: true,
-      windowClass: 'custom-modal',
-      size: 'lg'
+      size: 'lg',
+      // centered: true
     }
 
     this.modalService.open(content, ModalOptions)
 
   }
+
+  // closeModal(content:any){
+
+  //   this.modalService.close(content)
+
+  // }
 
 }
