@@ -133,12 +133,8 @@ section .section-title {
   height: 120px;
   border-radius: 50%;
 }
-.search-option {
-  font-size: 28px;
-  margin-left: 24px;
-}
 .green-text {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 500;
   color: #007b5e !important;
 }
@@ -147,41 +143,55 @@ section .section-title {
   height: 17.5px;
 }
 
-.all{
+/*.all{
   border: 2px solid blue;
   padding: 10px;
-  margin: 5px;
-}
+  margin: 5px; 
+}*/
 
 .header{
-  border: 2px solid red;
   height: 200px;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
-.page{
-  border: 2px solid green;
+/* .page{
+  border: 2px solid green; 
+} */
+
+/* .footer{
+  border: 2px solid pink; 
+} */
+
+::ng-deep ngb-modal-backdrop {
+  
+  z-index: 1050 !important;
+  
 }
 
-.footer{
-  border: 2px solid pink;
+.link-btn{
+  border: 1px solid black;
+  width: 200px;
 }
 
-#sett-btn{
+.search-option {
+  font-size: 28px;
+  /* margin-left: 24px; */
+}
 
-  position: absolute;
-  top: 0;
-  right: 20%;
-  margin: 10px;
+.logo{
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+.settings{
+  width: 20%;
 }
 
 .box-ricerca{
-  border: 1px solid green;
-  margin: 10px;
-}
-
-::ng-deep ngb-modal-backdrop {
-
-  z-index: 1050 !important;
-
+  width: 20%;
 }

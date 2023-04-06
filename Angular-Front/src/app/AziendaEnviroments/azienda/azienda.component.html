@@ -16,29 +16,28 @@
 
   <div class = "header">
 
-    <button id = "sett-btn" class = "btn btn-outline-secondary" routerLink="/admin" *ngIf="permissions"><i class="bi bi-gear-fill"></i></button>
+    <div class="box-ricerca" *ngIf="permissions">
 
-    <!-- input barre ricerca -->
-    <!-- search-wrapper my-5 container d-flex justify-content-start -->
-
-    <div class="box-ricerca">
-
-      <div class="search" *ngIf="permissions">
+      <div class="search-option">
 
         <p class="green-text">Ricerca:</p>
 
-        <div class="search-option">
+        <button class="btn btn-outline-success m-1" type="button" name="search" (click)="openModal(ModalDipendenti)">Dipendenti</button>
+        <button class="btn btn-outline-success m-1" type="button" name="search" (click)="openModal(ModalClienti)">Clienti</button>
 
-          <input class="bigger-dot" type="button" name="search" (click)="openModal(ModalDipendenti)">
-          <label> Dipendenti</label>
-          <br>
-          <input class="bigger-dot" type="button" name="search" (click)="openModal(ModalClienti)">
-          <label> Clienti</label>
-
-        </div>
+        <!-- <p id = "link-btn" class = " link-btn" style = "cursor: pointer;" (click)="openModal(ModalDipendenti)">Dipendenti</p>
+        <p id = "link-btn" class = " link-btn" style = "cursor: pointer;" (click)="openModal(ModalClienti)">Clienti</p> -->
 
       </div>
 
+    </div>
+
+    <div class = "logo">
+      <img src="../../../assets/Logo.PNG" alt="Logo_CloudMark" width="600">
+    </div>
+
+    <div class = "settings">
+      <button id = "sett-btn" class = "btn btn-outline-secondary" routerLink="/admin" *ngIf="permissions"><i class="bi bi-gear-fill"></i></button>
     </div>
 
     <!-- SearchBar Dipendente-->
@@ -219,6 +218,7 @@
 
     </ng-template>
 
+  </div>
 
   <!-- Team -->
 
@@ -304,7 +304,7 @@
 
     <div class="container d-flex align-items-center justify-content-center mt-5">
 
-      <button class="btn btn-primary w-50 p-2" routerLink="addAzienda" *ngIf="permissions">
+      <button class="btn btn-primary w-50 mb-5" routerLink="addAzienda" *ngIf="permissions">
 
         Aggiungi Azienda
 
