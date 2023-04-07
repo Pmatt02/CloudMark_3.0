@@ -1,67 +1,78 @@
-<h2 class="text-dark">Clienti</h2>
-<div>
-  <table class="table">
-    <thead class="bg-dark text-white">
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Partita iva</th>
-        <th scope="col">Indirizzo</th>
-        <th scope="col">Cap</th>
-        <th scope="col">Iban</th>
-        <th scope="col">Telefono</th>
-        <th scope="col">Email</th>
-        <th scope="col">Pec</th>
-        <th scope="col">Fax</th>
-        <th scope="col">Commesse</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let c of cliente$ | async">
-        <th>{{ c.id_cliente }}</th>
-        <td>{{ c.nome }}</td>
-        <td>{{ c.p_iva }}</td>
-        <td>{{ c.indirizzo }}</td>
-        <td>{{ c.cap }}</td>
-        <td>{{ c.iban }}</td>
-        <td>{{ c.telefono }}</td>
-        <td>{{ c.email }}</td>
-        <td>{{ c.pec }}</td>
-        <td>{{ c.fax }}</td>
-        <td *ngIf="numeroCommesse">{{ numeroCommesse }}</td>
-        <button
-          type="button"
-          class="btn bg-dark text-white my-2"
-          routerLink="/updateCliente/{{ c.id_cliente }}"
-          *ngIf="permissions"
-        >
-          Modifica
-        </button>
-        <button
-          type="button"
-          class="btn bg-dark text-white my-2"
-          routerLink="/clienteCommessa/{{ c.id_cliente }}"
-        >
-          Dettagli
-        </button>
-      </tr>
-      <button
-        type="button"
-        class="btn bg-dark text-white"
-        (click)="downloadFile()"
-      >
-        CSV
-      </button>
-    </tbody>
-  </table>
-  <br />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"/>
 
-  <button
-    type="button"
-    class="btn btn-dark"
-    routerLink="/addCliente/{{ idaz }}"
-    *ngIf="permissions"
-  >
-    Aggiungi
+<h2 class="text-dark">Clienti</h2>
+
+<div>
+
+  <div id="box">
+
+    <div class="bg-white">
+
+      <table class="table mb-0">
+
+        <thead style = "background: #007b5e;">
+
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Partita iva</th>
+            <th scope="col">Indirizzo</th>
+            <th scope="col">Cap</th>
+            <th scope="col">Iban</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Email</th>
+            <th scope="col">Pec</th>
+            <th scope="col">Fax</th>
+            <th scope="col">Commesse</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let c of cliente$ | async">
+            <td style = "font-weight: 700;">{{ c.id_cliente }}</td>
+            <td>{{ c.nome }}</td>
+            <td>{{ c.p_iva }}</td>
+            <td>{{ c.indirizzo }}</td>
+            <td>{{ c.cap }}</td>
+            <td>{{ c.iban }}</td>
+            <td>{{ c.telefono }}</td>
+            <td>{{ c.email }}</td>
+            <td>{{ c.pec }}</td>
+            <td>{{ c.fax }}</td>
+            <td *ngIf="numeroCommesse">{{ numeroCommesse }}</td>
+
+            <div class="d-flex justify-content-center">
+
+              <button type="button" class="btn btn-outline-warning m-2" routerLink="/updateCliente/{{ c.id_cliente }}" *ngIf="permissions">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+
+              <button type="button" class="btn btn-info text-white m-2" routerLink="/clienteCommessa/{{ c.id_cliente }}">
+                <i class="bi bi-card-text"></i>
+              </button>
+            
+            </div>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  <br/>
+
+  <button type="button" class="btn btn-outline-primary text-white m-2" (click)="downloadFile()">
+    <i class="bi bi-file-earmark-arrow-down">CSV</i>
   </button>
+
+  <button type="button" class="btn btn-success text-white m-2" routerLink="/addDipendente/{{ idaz }}" *ngIf="permissions" >
+    <i class="bi bi-person-add"> Aggiungi</i>
+  </button>
+
 </div>

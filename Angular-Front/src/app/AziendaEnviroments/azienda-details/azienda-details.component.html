@@ -1,7 +1,13 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"/>
+
 <h2 class="text-dark m-5">Dettaglio Azienda</h2>
+
 <div class="m-5" *ngIf="azienda$ | async as a">
+
   <table class="table">
+
     <thead class="bg-dark text-white">
+
       <tr>
         <th scope="col">Nome azienda</th>
         <th scope="col">Indirizzo azienda</th>
@@ -13,8 +19,11 @@
         <th scope="col">PEC</th>
         <th scope="col">FAX</th>
       </tr>
+
     </thead>
+
     <tbody>
+
       <tr>
         <td>{{ a.nome }}</td>
         <td>{{ a.indirizzo }}</td>
@@ -25,39 +34,69 @@
         <td>{{ a.telefono }}</td>
         <td>{{ a.pec }}</td>
         <td>{{ a.fax }}</td>
-        <br />
+        <br/>
+
       </tr>
+
     </tbody>
+
   </table>
-  <br />
+
+  <br/>
+
   <div>
-    <button class="btn btn-dark m-2" routerLink="/">Home</button>
-    <button
-      class="btn btn-dark m-2"
-      routerLink="/aziendaUpdate/{{ a.id_azienda }}"
-      *ngIf="permissions"
-    >
-      Modifica
+
+    <button class="btn btn-dark m-2" routerLink="/">
+      <i class="bi bi-house"></i>
     </button>
-    <button
-      class="btn btn-dark m-2"
-      (click)="deleteAzienda(a.id_azienda)"
-      routerLink="/"
-      *ngIf="permissions"
-    >
-      Elimina
+
+    <button class="btn btn-dark m-2" routerLink="/aziendaUpdate/{{ a.id_azienda }}" *ngIf="permissions" >
+      <i class="bi bi-pencil-square"></i>
     </button>
+
+    <button class="btn btn-dark m-2" (click)="deleteAzienda(a.id_azienda)" routerLink="/" *ngIf="permissions" >
+      <i class="bi bi-trash"></i>
+    </button>
+
+    <ng-template>
+
+      <div class="modal-header">
+
+        <h5 class="modal-title">Attenzione</h5>
+
+      </div>
+
+      <div class="modal-body">
+
+        <p>Sicuro di voler procedere?</p>
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger">Elimina</button>
+
+      </div>
+
+    </ng-template>
+
   </div>
+
 </div>
 
 <div class="m-5 row">
+
   <div class="col-6">
     <app-dipendente [idaz]="aziendaId"></app-dipendente>
   </div>
+
 </div>
 
 <div class="m-5 row">
+
   <div class="col-6">
     <app-cliente [idaz]="aziendaId"></app-cliente>
   </div>
+
 </div>

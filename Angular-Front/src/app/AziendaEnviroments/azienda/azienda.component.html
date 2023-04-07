@@ -32,8 +32,16 @@
 
     </div>
 
-    <div class = "logo">
+    <div class = "logo" *ngIf = "permissions; else elseblock">
       <img src="../../../assets/Logo.PNG" alt="Logo_CloudMark" width="600">
+    </div>
+
+    <div class = "content">
+      <ng-template #elseblock>
+        <div class = "logo_2">
+          <img src="../../../assets/Logo.PNG" alt="Logo_CloudMark" width="600">
+        </div>
+      </ng-template>
     </div>
 
     <div class = "settings">
