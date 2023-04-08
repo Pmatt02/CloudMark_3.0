@@ -46,9 +46,32 @@
                 <i class="bi bi-pencil-square"></i>
               </button>
 
-              <button class="btn btn-danger m-2" (click)="deleteEmployee(d.id_dipendente, idaz)" *ngIf="permissions" >
+              <button class="btn btn-danger m-2" (click) = "openModal(reqModal)" *ngIf="permissions" >
                 <i class="bi bi-trash"></i>
               </button>
+
+              <ng-template #reqModal let-modal>
+
+                <div class="modal-header">
+          
+                  <h5 class="modal-title">Attenzione</h5>
+          
+                </div>
+          
+                <div class="modal-body">
+          
+                  <p>Sicuro di voler procedere?</p>
+          
+                </div>
+          
+                <div class="modal-footer">
+          
+                  <button type="button" class="btn btn-secondary" (click) = "modal.close()">Close</button>
+                  <button type="button" class="btn btn-danger" (click)="deleteEmployee(d.id_dipendente, idaz)" (click) = "modal.close()" routerLink="/">Elimina</button>
+          
+                </div>
+          
+              </ng-template>
 
             </div>
 

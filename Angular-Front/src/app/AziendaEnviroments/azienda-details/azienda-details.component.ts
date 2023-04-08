@@ -4,6 +4,7 @@ import { AziendaService } from '../../services/azienda.service';
 import { AziendaComponent } from '../azienda/azienda.component';
 import { Azienda } from '../../modules/azienda';
 import { Observable } from 'rxjs';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-azienda-details',
@@ -16,7 +17,7 @@ export class AziendaDetailsComponent implements OnInit{
   permissions: boolean = false; 
   
 
-  constructor(private router: ActivatedRoute, private aziendaService: AziendaService){
+  constructor(private modalService: NgbModal, private router: ActivatedRoute, private aziendaService: AziendaService){
 
   }
   ngOnInit(): void {
@@ -39,5 +40,18 @@ export class AziendaDetailsComponent implements OnInit{
   deleteAzienda(id: string){
       console.log(id)
       return this.aziendaService.deleteCompany(id).subscribe((res)=>{console.log(res)})
+  }
+
+  openModal(content:any) {
+
+    const ModalOptions: NgbModalOptions = {
+      backdrop: true,
+      keyboard: true,
+      //size: 'lg',
+      centered: true
+    }
+
+    this.modalService.open(content, ModalOptions)
+
   }
 }

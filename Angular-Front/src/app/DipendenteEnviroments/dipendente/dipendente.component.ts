@@ -6,6 +6,7 @@ import { Dipendente } from 'src/app/modules/dipendente';
 import { DipendenteService } from 'src/app/services/dipendente.service';
 import {saveAs} from 'file-saver';
 import { AziendaService } from 'src/app/services/azienda.service';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dipendente',
@@ -18,7 +19,7 @@ export class DipendenteComponent implements OnInit{
   @Input() idaz: any;
   permissions: boolean= false;
 
-  constructor(private router: ActivatedRoute, private servizioDipendente: DipendenteService, private aziendaService: AziendaService) {};
+  constructor(private modalService: NgbModal, private router: ActivatedRoute, private servizioDipendente: DipendenteService, private aziendaService: AziendaService) {};
 
   ngOnInit(): void {
     this.router.paramMap.subscribe((param: ParamMap) => {
@@ -52,4 +53,18 @@ export class DipendenteComponent implements OnInit{
       saveAs(blob, 'file.csv');
     })
   }
+
+  openModal(content:any) {
+
+    const ModalOptions: NgbModalOptions = {
+      backdrop: true,
+      keyboard: true,
+      //size: 'lg',
+      centered: true
+    }
+
+    this.modalService.open(content, ModalOptions)
+
+  }
+  
 }
